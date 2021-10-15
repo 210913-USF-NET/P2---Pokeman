@@ -1,4 +1,4 @@
-# P2 - Pokeman
+# P2 - PokeMatch
 
 Proposal: 
   Are you tired of being single? 
