@@ -15,13 +15,24 @@ Team Members
 ### Overview
 - Tables
 - Features
-    - Logging in using username and password (backend) (mvp)
+    - Logging in using username and password (backend)
     - User will be greeted with pokemon theme interface (front end)
-    - User can set profile pictures as Pokemon (front end/backend) (stretch)
+    - User can set profile pictures as Pokemon (front end/backend)
     - User will be grouped into three category based on pokemon elements (fire, water, grass) (backend)
     - User can talk to similar user who selected the same types (backend)
     - User talks to users using Pokemon moves (front end/backend)
     - Admin can add more types and Pokemon (backend)
+
+    - MVP:
+      - add user
+      - search user
+      - talk to other user
+      - API talks to external API
+    
+    - Stretch Goals:
+      - User can add picture to profile
+      - 
+
 - Functionality:
   - - API talks to external API to get Pokemon data and talk to users
   
