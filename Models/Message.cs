@@ -14,7 +14,7 @@ namespace Models
         public User Sender { get; set; }
         public User Receiver { get; set; }
 
-        public Move Move { get; set; }
+        public Move Skill { get; set; }
 
     }
 }
