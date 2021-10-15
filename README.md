@@ -15,9 +15,9 @@ Team Members
 ### Overview
 - Tables
 - Features
-    - Logging in using username and password (backend)
+    - Logging in using username and password (backend) (mvp)
     - User will be greeted with pokemon theme interface (front end)
-    - User can set profile pictures as Pokemon (front end/backend)
+    - User can set profile pictures as Pokemon (front end/backend) (stretch)
     - User will be grouped into three category based on pokemon elements (fire, water, grass) (backend)
     - User can talk to similar user who selected the same types (backend)
     - User talks to users using Pokemon moves (front end/backend)
