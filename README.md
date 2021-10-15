@@ -8,7 +8,7 @@ Team Members
 - Larry Moua
 
 ### Proposal
-Are you tired of being single? Do you love Pokemon? Are you just finding that your partner thinks Pickachu is the main character?
+  Are you tired of being single? Do you love Pokemon? Are you just finding that your partner thinks Pickachu is the main character?
   
   WELL! Look no further for PokeMatch was designed by Revature top 1% to INNER JOIN love and Pokemon into one convenient web app.
    
@@ -22,13 +22,16 @@ Are you tired of being single? Do you love Pokemon? Are you just finding that yo
     - User can talk to similar user who selected the same types (backend)
     - User talks to users using Pokemon moves (front end/backend)
     - Admin can add more types and Pokemon (backend)
+- Functionality:
+  - - API talks to external API to get Pokemon data and talk to users
+  
 - Tech Stack:
-    - API talks to external API to get Pokemon data and talk to users
     - PostgreSQL DB
     - EF Core
     - Xunit
     - Serilog or Nlog
     - Azure
     - Github Actions
-    - ASP .NET Core MVC
+    - ASP.NET Core MVC
+    - ASP.NET CORE API 
     
