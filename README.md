@@ -32,13 +32,13 @@ Team Members
     - Admin can view all accounts
 
 - MVP:
-      - add user
-      - admin functionality(view accounts, add more types and pokemon)
-      - search user
-      - talk to other user
-      - Pokemon review system to help curate matching
-      - User can add picture to profile
-      - API talks to external API
+     - add user
+     - admin functionality(view accounts, add more types and pokemon)
+     - search user
+     - talk to other user
+     - Pokemon review system to help curate matching
+     - User can add picture to profile
+     - API talks to external API
     
 - Stretch Goals:
      -Messages can be reported, and will be sent to admins for review.
