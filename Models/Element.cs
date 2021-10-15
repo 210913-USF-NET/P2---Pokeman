@@ -14,6 +14,6 @@ namespace Models
 
         public int ElementGroupId { get; set; }
 
-        public ElementGroup ElementGroups { get; set; }
+        ElementGroup ElementGroups { get; set; }
     }
 }
