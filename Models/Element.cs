@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class Element
+    public class Element
     {
         public int Id { get; set; }
 
@@ -14,6 +14,6 @@ namespace Models
 
         public int ElementGroupId { get; set; }
 
-        public ElementGroup ElementGroups { get; set; }
+        ElementGroup ElementGroups { get; set; }
     }
 }
