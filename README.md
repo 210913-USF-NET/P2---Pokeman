@@ -26,6 +26,7 @@ Team Members
   - - API talks to external API to get Pokemon data and talk to users
   
 - Tech Stack:
+    - Angular
     - PostgreSQL DB
     - EF Core
     - Xunit
