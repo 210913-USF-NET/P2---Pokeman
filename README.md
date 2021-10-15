@@ -31,7 +31,6 @@ Team Members
     
     - Stretch Goals:
       - User can add picture to profile
-      - 
 
 - Functionality:
   - - API talks to external API to get Pokemon data and talk to users
