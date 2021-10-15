@@ -31,7 +31,7 @@ Team Members
     - Admin can add more types and Pokemon (backend)
     - Admin can view all accounts
 
-    - MVP:
+- MVP:
       - add user
       - admin functionality(view accounts, add more types and pokemon)
       - search user
@@ -40,7 +40,7 @@ Team Members
       - User can add picture to profile
       - API talks to external API
     
-    - Stretch Goals:
+- Stretch Goals:
      -Messages can be reported, and will be sent to admins for review.
      -Admin can delete accounts that have been found to break TOS 
      -Dice roll game with life points assinged to users as an entertaining way to make connections
