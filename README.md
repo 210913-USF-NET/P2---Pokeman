@@ -18,7 +18,7 @@ Team Members
 - Tables
 - Features
     - Register users with username, password, type (backend)
-    - Logging in using username and password (backend)
+    - Logging in using username and password or with an existing Gmail account (backend)
     - User will be greeted with pokemon theme interface (front end)
     - User can set profile pictures as Pokemon (front end/backend)
     - User will be grouped into three category based on pokemon elements (fire, water, grass) (backend)
