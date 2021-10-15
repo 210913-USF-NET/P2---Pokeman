@@ -13,6 +13,7 @@ Are you tired of being single? Do you love Pokemon? Are you just finding that yo
   WELL! Look no further for PokeMatch was designed by Revature top 1% to INNER JOIN love and Pokemon into one convenient web app.
    
 ### Overview
+- Tables
 - Features
     - Logging in using username and password (backend)
     - User will be greeted with pokemon theme interface (front end)
@@ -21,7 +22,7 @@ Are you tired of being single? Do you love Pokemon? Are you just finding that yo
     - User can talk to similar user who selected the same types (backend)
     - User talks to users using Pokemon moves (front end/backend)
     - Admin can add more types and Pokemon (backend)
-- Functionality:
+- Tech Stack:
     - API talks to external API to get Pokemon data and talk to users
     - PostgreSQL DB
     - EF Core
