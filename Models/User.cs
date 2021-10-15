@@ -15,6 +15,6 @@ namespace Models
 
         public int ElementId { get; set; }
 
-        public List<Element> Elements { get; set; }
+        List<Element> Elements { get; set; }
     }
 }

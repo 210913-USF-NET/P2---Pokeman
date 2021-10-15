@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class Move
+    public class Move
     {
         public int Id { get; set; }
         public string action { get; set; }
