@@ -1,5 +1,7 @@
 # P2 - PokeMatch
 
+team members: Karla Rodriguez, Bao Duong, Hunter Rose, Michael Good, Larry Moua
+
 Proposal: 
   Are you tired of being single? 
   Do you love Pokemon? 
