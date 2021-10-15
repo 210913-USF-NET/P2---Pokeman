@@ -17,12 +17,14 @@ Team Members
 ### Overview
 - Tables
 - Features
+    - Register users with username, password, type (backend)
     - Logging in using username and password (backend)
     - User will be greeted with pokemon theme interface (front end)
     - User can set profile pictures as Pokemon (front end/backend)
     - User will be grouped into three category based on pokemon elements (fire, water, grass) (backend)
-    - User can talk to similar users who selected the same types through direct messaging (backend)
+    - User will be able to select other users from their group to match (front end)
     - Users will have the option to accept chat requests
+    - User can talk to matches through direct messaging (backend)
     - Users can view all of their matches and chat histories
     - Users can block other users 
     - User talks to users using Pokemon moves as preset icebreakers before starting a conversation(front end/backend)
