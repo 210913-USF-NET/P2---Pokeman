@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class Matches
+    public class Matches
     {
         public int Id { get; set; }
         public List<User> users { get; set; }
