@@ -24,6 +24,11 @@ namespace WebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<PokeMatchDB>(options =>
+            options.UseNpgsql(Configuration.GetConnectionString("InvincibleDB")));
+
+            /*services.AddScoped<IRepo, DBRepo>();
+            services.AddScoped<IBl, Bl>();*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
