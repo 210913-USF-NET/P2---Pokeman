@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class Message
+    public class Message
     {
         public int Id { get; set; }
         public string Text { get; set; }
@@ -14,7 +14,7 @@ namespace Models
         public User Sender { get; set; }
         public User Receiver { get; set; }
 
-        public Move Move { get; set; }
+        public Move Skill { get; set; }
 
     }
 }
