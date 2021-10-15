@@ -18,4 +18,11 @@ Overview:
     - admin can add more types and Pokemon (backend)
 
   Functionality:
-    - API talks to external API to get Pokemon data
+    - API talks to external API to get Pokemon data and talk to users
+    - PostgreSQL DB
+    - EF Core
+    - Xunit
+    - Serilog or Nlog
+    - Azure
+    - Github Actions
+    - ASP.NET Core MVC
