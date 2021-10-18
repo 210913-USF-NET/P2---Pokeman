@@ -8,6 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DL;
+using BL;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebUI
 {
@@ -24,11 +27,11 @@ namespace WebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<PokeMatchDB>(options =>
-            options.UseNpgsql(Configuration.GetConnectionString("InvincibleDB")));
+            services.AddDbContext<PokeMatchDb>(options =>
+            options.UseNpgsql(Configuration.GetConnectionString("PokeMatchDB")));
 
-            /*services.AddScoped<IRepo, DBRepo>();
-            services.AddScoped<IBl, Bl>();*/
+            services.AddScoped<IRepo, DBRepo>();
+            services.AddScoped<IBL, PokeBL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +58,7 @@ namespace WebUI
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=User}/{action=SignIn}/{id?}");
             });
         }
     }
