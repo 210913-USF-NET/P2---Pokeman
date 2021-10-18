@@ -5,7 +5,7 @@ namespace DL
 {
     public class PokeMatchDb : DbContext
     {
-        public PokeMatchDb() { }
+        public PokeMatchDb() : base () { }
 
         public PokeMatchDb(DbContextOptions options) : base(options) { }
 
