@@ -18,30 +18,12 @@ namespace BL
         }
 
 
-        /*Task<User> createUser(User newUser)
-        {
-            throw new NotImplementedException();
-        }*/
-
-        /*Task<List<User>> ListOfUsers()
-        {
-            throw new NotImplementedException();
-        }*/
-
         public async Task<User> AddUserAsync(User user)
         {
             return await _repo.AddUserAsync(user);
 
         }
 
-        /*Task<User> SearchUser(User user)
-        {
-            throw new NotImplementedException();
-        }*/
-        }
-
-
-        //Element
         public async Task<Element> AddElementAsync(Element ele)
         {
             return await _repo.AddElementAsync(ele);
@@ -58,3 +40,4 @@ namespace BL
         }
     }
 }
+
