@@ -9,11 +9,7 @@ namespace DL
 {
     public interface IRepo
     {
-        public User createUser(User newUser);
-
-        public List<User> ListOfUsers();
-
-        public User SearchUser(User user);
+       
     }
 }
 

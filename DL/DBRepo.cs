@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace DL
@@ -15,45 +16,32 @@ namespace DL
         {
             _context = context;
         }
-        public User createUser(User newUser)
+       
+
+        public async Task<Move> CreateMoveAsync(Move move)
         {
-            newUser = _context.Add(newUser).Entity;
-            _context.SaveChanges();
-            return newUser;
+            await _context.AddAsync(move);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+            return move;
         }
 
-        public List<User> ListOfUsers()
+        public async Task<List<Move>> GetAllMovesAsync()
         {
-            return _context.Users.Select(
-                users => new User()
-                {
-                    Id = users.Id,
-                    Username = users.Username,
-                    Password = users.Password,
-                    Email = users.Email,
-                    ElementId = users.ElementId
-                }
-            ).ToList();
+            return await _context.Moves
+                .Select(r => r).ToListAsync();
         }
 
-        public User SearchUser(User user)
+        public async Task<Move> GetMovesFromElementIdAsync(int id)
         {
-            List<User> userList = ListOfUsers();
-            for (int i = 0; i < userList.Count; i++)
-            {
-                if (user.Username == userList[i].Username && user.Password == userList[i].Password)
-                {
-                    return new User
-                    {
-                        Id = userList[i].Id,
-                        Username = userList[i].Username,
-                        Password = userList[i].Password,
-                        Email = userList[i].Email,
-                        ElementId = userList[i].ElementId
-                    };
-                }
-            }
-            return null;
+            return await _context.Moves
+                //this include method joins reviews table with the restaurant table
+                //and grabs all reviews that references the selected restaurant
+                //by restaurantId
+                // .Include("Reviews")
+                .AsNoTracking()
+                //.Include(r => r.Element)
+                .FirstOrDefaultAsync(r => r.Id == id);
         }
     }
 }
