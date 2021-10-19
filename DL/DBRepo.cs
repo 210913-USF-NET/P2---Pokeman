@@ -21,9 +21,9 @@ namespace DL
         {
             await _context.AddAsync(user);
             await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
             return user;
         }
-       
 
         public async Task<Move> CreateMoveAsync(Move move)
         {

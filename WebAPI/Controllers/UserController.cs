@@ -9,8 +9,14 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
+<<<<<<< HEAD
     [Route("api/[controller]")]
     [ApiController]
+=======
+    [ApiController]
+    [Route("[controller]")]
+
+>>>>>>> f415a938f93098dfa403a215179b2f5f70a1cd62
     public class UserController : Controller
     {
 
@@ -21,7 +27,11 @@ namespace WebAPI.Controllers
             _bl = bl;
         }
 
+<<<<<<< HEAD
 
+=======
+        // POST api/<UserController>
+>>>>>>> f415a938f93098dfa403a215179b2f5f70a1cd62
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] User user)
         {
