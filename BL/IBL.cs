@@ -14,10 +14,16 @@ namespace BL
         /*Task<User> createUser(User newUser);
 
         Task<List<User>> ListOfUsers();
+     
 
         Task<User> SearchUser(User user);*/
 
-        Task<User> AddUserAsync(User user);
+        //Element
 
+        public Task<Element> AddElementAsync(Element ele);
+
+        public Task<Element> GetOneElementByIdAsync(int id);
+
+        public Task<List<Element>> GetAllElementsAsync();
     }
 }

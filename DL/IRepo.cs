@@ -9,7 +9,15 @@ namespace DL
 {
     public interface IRepo
     {
-        Task<User> AddUserAsync(User resto);
+        
+
+        //Element
+        public Task<Element> AddElementAsync(Element ele);
+
+        public Task<Element> GetOneElementByIdAsync(int id);
+
+        public Task<List<Element>> GetAllElementsAsync();
+        
     }
 }
 

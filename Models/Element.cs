@@ -12,8 +12,7 @@ namespace Models
 
         public string Name { get; set; }
 
-        public int ElementGroupId { get; set; }
-
         ElementGroup ElementGroups { get; set; }
+
     }
 }
