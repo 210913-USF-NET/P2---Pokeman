@@ -10,6 +10,6 @@ namespace BL
 {
     public interface IBL
     {
-
+        Task<User> AddUserAsync(User user);
     }
 }
