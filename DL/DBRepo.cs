@@ -11,49 +11,13 @@ namespace DL
     {
         private PokeMatchDb _context;
 
-        public DBRepo(PokeMatchDb context)
+        public async Task<User> AddUserAsync(User user)
         {
-            _context = context;
-        }
-        public User createUser(User newUser)
-        {
-            newUser = _context.Add(newUser).Entity;
-            _context.SaveChanges();
-            return newUser;
-        }
+            await _context.AddAsync(user);
 
-        public List<User> ListOfUsers()
-        {
-            return _context.Users.Select(
-                users => new User()
-                {
-                    Id = users.Id,
-                    Username = users.Username,
-                    Password = users.Password,
-                    Email = users.Email,
-                    ElementId = users.ElementId
-                }
-            ).ToList();
-        }
+            await _context.SaveChangesAsync();
 
-        public User SearchUser(User user)
-        {
-            List<User> userList = ListOfUsers();
-            for (int i = 0; i < userList.Count; i++)
-            {
-                if (user.Username == userList[i].Username && user.Password == userList[i].Password)
-                {
-                    return new User
-                    {
-                        Id = userList[i].Id,
-                        Username = userList[i].Username,
-                        Password = userList[i].Password,
-                        Email = userList[i].Email,
-                        ElementId = userList[i].ElementId
-                    };
-                }
-            }
-            return null;
+            return user;
         }
     }
 }
