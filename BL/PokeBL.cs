@@ -28,28 +28,43 @@ namespace BL
             throw new NotImplementedException();
         }*/
 
+        /*Task<User> SearchUser(User user)
+      {
+          throw new NotImplementedException();
+      }*/
+        //}
+
+
+
+        //*****************************Adding/Creating********************************   
+
         public async Task<User> AddUserAsync(User user)
         {
             return await _repo.AddUserAsync(user);
 
         }
 
-        /*Task<User> SearchUser(User user)
-        {
-            throw new NotImplementedException();
-        }*/
-        //}
-
-
-        //Element
+      
+  
         public async Task<Element> AddElementAsync(Element ele)
         {
             return await _repo.AddElementAsync(ele);
         }
 
+        
+
+    //*****************************Get One/Few********************************
+        
+
         public async Task<Element> GetOneElementByIdAsync(int id)
         {
             return await _repo.GetOneElementByIdAsync(id);
+        }
+
+    //*****************************Get All********************************
+        public async Task<List<User>> GetAllUsersAsync()
+        {
+            return await _repo.GetAllUsersAsync();
         }
 
         public async Task<List<Element>> GetAllElementsAsync()
