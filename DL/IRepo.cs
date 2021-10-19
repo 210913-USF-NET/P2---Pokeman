@@ -12,6 +12,15 @@ namespace DL
         public Task<User> AddUserAsync(User user);
 
         public Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup);
+        
+
+        //Element
+        public Task<Element> AddElementAsync(Element ele);
+
+        public Task<Element> GetOneElementByIdAsync(int id);
+
+        public Task<List<Element>> GetAllElementsAsync();
+        
     }
 }
 

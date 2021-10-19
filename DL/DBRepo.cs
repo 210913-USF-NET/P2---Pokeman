@@ -17,6 +17,8 @@ namespace DL
         }
 
         public async Task<User> AddUserAsync(User user)
+        //Element
+        public async Task<Element> AddElementAsync (Element ele)
         {
             await _context.AddAsync(user);
 
@@ -24,7 +26,19 @@ namespace DL
 
             _context.ChangeTracker.Clear();
 
-            return user;
+            return ele;
+        }
+
+        public async Task<Element> GetOneElementByIdAsync(int id)
+        {
+            return await _context.Elements
+            .AsNoTracking()
+            .FirstOrDefaultAsync(e => e.Id == id);
+        }
+
+        public async Task<List<Element>> GetAllElementsAsync()
+        {
+            return await _context.Elements.Select(e => e).ToListAsync();
         }
 
         public async Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup)

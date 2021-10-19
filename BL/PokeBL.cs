@@ -38,6 +38,26 @@ namespace BL
         Task<User> SearchUser(User user)
         {
             throw new NotImplementedException();
+        }*/
+        }
+
+
+        //Element
+        public async Task<Element> AddElementAsync(Element ele)
+        {
+            return await _repo.AddElementAsync(ele);
+        }
+
+        public async Task<Element> GetOneElementByIdAsync(int id)
+        {
+            return await _repo.GetOneElementByIdAsync(id);
+        }
+
+        public async Task<List<Element>> GetAllElementsAsync()
+        {
+            return await _repo.GetAllElementsAsync();
+        }
+    }
         }
         */
         public async Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup)
