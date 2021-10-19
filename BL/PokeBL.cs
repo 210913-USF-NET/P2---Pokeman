@@ -34,10 +34,12 @@ namespace BL
 
         }
 
-        /*Task<User> SearchUser(User user)
+        /*
+        Task<User> SearchUser(User user)
         {
             throw new NotImplementedException();
         }
+        */
         public async Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup)
         {
             return await _repo.CreateElementGroupAsync(newElementGroup);
