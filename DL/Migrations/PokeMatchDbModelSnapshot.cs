@@ -26,9 +26,6 @@ namespace DL.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("ElementGroupId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
@@ -104,6 +101,9 @@ namespace DL.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<int>("ElementGroupId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("action")
                         .HasColumnType("text");
 
@@ -123,6 +123,12 @@ namespace DL.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Interest")
                         .HasColumnType("text");
 
                     b.Property<int?>("MatchesId")

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +16,7 @@ namespace BL
         {
             _repo = irepo;
         }
+
 
 
         /*Task<User> createUser(User newUser)
@@ -38,14 +39,14 @@ namespace BL
 
         //*****************************Adding/Creating********************************   
 
+
         public async Task<User> AddUserAsync(User user)
         {
             return await _repo.AddUserAsync(user);
 
         }
 
-      
-  
+
         public async Task<Element> AddElementAsync(Element ele)
         {
             return await _repo.AddElementAsync(ele);
@@ -73,3 +74,4 @@ namespace BL
         }
     }
 }
+
