@@ -15,8 +15,21 @@ namespace BL
         public PokeBL(IRepo irepo)
         {
             _repo = irepo;
-        }  
+        }
 
+        Task<User> createUser(User newUser)
+        {
+            throw new NotImplementedException();
+        }
 
+        Task<List<User>> ListOfUsers()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<User> SearchUser(User user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
