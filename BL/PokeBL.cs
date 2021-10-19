@@ -11,15 +11,12 @@ namespace BL
     public class PokeBL : IBL
     {
         private IRepo _repo;
-        public User createUser(User newUser) { return _repo.createUser(newUser); }
-        public List<User> ListOfUsers() { return _repo.ListOfUsers(); }
-
-        public User SearchUser(User user) { return _repo.SearchUser(user); }
 
         public PokeBL(IRepo irepo)
         {
             _repo = irepo;
+        }  
 
-        }
+
     }
 }
