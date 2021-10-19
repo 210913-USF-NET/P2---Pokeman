@@ -10,11 +10,8 @@ namespace BL
 {
     public interface IBL
     {
-        public User createUser(User newUser);
 
-        public List<User> ListOfUsers();
-
-        public User SearchUser(User user);
+     
 
 
         //Element
