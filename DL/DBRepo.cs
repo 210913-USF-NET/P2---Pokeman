@@ -12,8 +12,6 @@ namespace DL
     {
         private PokeMatchDb _context;
 
-    
-
         //Element
         public async Task<Element> AddElementAsync (Element ele)
         {
