@@ -35,6 +35,7 @@ namespace WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
             });
+
             services.AddDbContext<PokeMatchDb>(options =>
             options.UseNpgsql(Configuration.GetConnectionString("HatsDB")));
             services.AddScoped<IRepo, DBRepo>();

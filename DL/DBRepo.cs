@@ -16,11 +16,18 @@ namespace DL
             _context = context;
         }
 
+        public DBRepo(PokeMatchDb context)
+        {
+            _context = context;
+        }
+
         public async Task<User> AddUserAsync(User user)
         {
             await _context.AddAsync(user);
 
             await _context.SaveChangesAsync();
+
+            _context.ChangeTracker.Clear();
 
             return user;
         }
