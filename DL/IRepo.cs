@@ -9,7 +9,7 @@ namespace DL
 {
     public interface IRepo
     {
-       
+        Task<User> AddUserAsync(User user);
     }
 }
 

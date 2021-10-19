@@ -16,6 +16,13 @@ namespace DL
         {
             _context = context;
         }
+
+        public async Task<User> AddUserAsync(User user)
+        {
+            await _context.AddAsync(user);
+            await _context.SaveChangesAsync();
+            return user;
+        }
        
 
         public async Task<Move> CreateMoveAsync(Move move)
@@ -25,23 +32,23 @@ namespace DL
             _context.ChangeTracker.Clear();
             return move;
         }
-
         public async Task<List<Move>> GetAllMovesAsync()
         {
             return await _context.Moves
                 .Select(r => r).ToListAsync();
         }
-
         public async Task<Move> GetMovesFromElementIdAsync(int id)
         {
             return await _context.Moves
-                //this include method joins reviews table with the restaurant table
-                //and grabs all reviews that references the selected restaurant
-                //by restaurantId
-                // .Include("Reviews")
                 .AsNoTracking()
-                //.Include(r => r.Element)
+                .Include(r => r.ElementGroupId)
                 .FirstOrDefaultAsync(r => r.Id == id);
+        }
+        public async Task RemoveMoveAsync(int id)
+        {
+            _context.Moves.Remove(await GetMovesFromElementIdAsync(id));
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
         }
     }
 }
