@@ -10,7 +10,13 @@ namespace BL
 {
     public interface IBL
     {
-        Task<User> AddUserAsync(User user);
 
+        Task<User> AddUserAsync(User user);
+  
+        Task<Element> AddElementAsync(Element ele);
+
+        Task<Element> GetOneElementByIdAsync(int id);
+
+        Task<List<Element>> GetAllElementsAsync();
     }
 }

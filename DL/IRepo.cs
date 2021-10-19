@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +9,15 @@ namespace DL
 {
     public interface IRepo
     {
+
         Task<User> AddUserAsync(User user);
+        
+        public Task<Element> AddElementAsync(Element ele);
+
+        public Task<Element> GetOneElementByIdAsync(int id);
+
+        public Task<List<Element>> GetAllElementsAsync();
+        
     }
 }
 
