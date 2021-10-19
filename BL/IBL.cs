@@ -20,11 +20,14 @@ namespace BL
 
         //Element
 
-        public Task<Element> AddElementAsync(Element ele);
+        Task<User> AddUserAsync(User user);
 
-        public Task<Element> GetOneElementByIdAsync(int id);
+        Task<Element> AddElementAsync(Element ele);
 
-        public Task<List<Element>> GetAllElementsAsync();
+        Task<Element> GetOneElementByIdAsync(int id);
+
+        Task<List<Element>> GetAllElementsAsync();
+
         Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup);
     }
 }

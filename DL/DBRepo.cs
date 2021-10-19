@@ -17,10 +17,19 @@ namespace DL
         }
 
         public async Task<User> AddUserAsync(User user)
+        {
+            await _context.AddAsync(user);
+
+            await _context.SaveChangesAsync();
+
+            _context.ChangeTracker.Clear();
+
+            return user;
+        }
         //Element
         public async Task<Element> AddElementAsync (Element ele)
         {
-            await _context.AddAsync(user);
+            await _context.AddAsync(ele);
 
             await _context.SaveChangesAsync();
 

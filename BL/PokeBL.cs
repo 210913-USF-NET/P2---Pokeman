@@ -39,8 +39,6 @@ namespace BL
         {
             throw new NotImplementedException();
         }*/
-        }
-
 
         //Element
         public async Task<Element> AddElementAsync(Element ele)
@@ -57,9 +55,7 @@ namespace BL
         {
             return await _repo.GetAllElementsAsync();
         }
-    }
-        }
-        */
+
         public async Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup)
         {
             return await _repo.CreateElementGroupAsync(newElementGroup);
