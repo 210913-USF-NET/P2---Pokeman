@@ -17,6 +17,8 @@ namespace DL
             _context = context;
         }
 
+    //*****************************Adding/Creating********************************    
+
         public async Task<User> AddUserAsync(User user)
         {
          await _context.AddAsync(user);
@@ -24,25 +26,19 @@ namespace DL
             _context.ChangeTracker.Clear();
           return user;
         }
-        
-        public async Task<Element> AddElementAsync (Element ele)
+
+        public async Task<Element> AddElementAsync(Element ele)
         {
             await _context.AddAsync(ele);
             await _context.SaveChangesAsync();
             _context.ChangeTracker.Clear();
             return ele;
-         }
-  
-        public async Task<Element> GetOneElementByIdAsync(int id)
-        {
-            return await _context.Elements
-            .AsNoTracking()
-            .FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public async Task<List<Element>> GetAllElementsAsync()
+        public async Task<List<User>> GetAllUsersAsync()
         {
-            return await _context.Elements.Select(e => e).ToListAsync();
+            return await _context.Users.Select(u => u).ToListAsync();
+
         }
 
         public async Task<Move> CreateMoveAsync(Move move)
@@ -52,11 +48,17 @@ namespace DL
             _context.ChangeTracker.Clear();
             return move;
         }
-        public async Task<List<Move>> GetAllMovesAsync()
+
+
+        //*****************************Get One/Few********************************
+
+        public async Task<Element> GetOneElementByIdAsync(int id)
         {
-            return await _context.Moves
-                .Select(r => r).ToListAsync();
+            return await _context.Elements
+            .AsNoTracking()
+            .FirstOrDefaultAsync(e => e.Id == id);
         }
+
         public async Task<Move> GetMovesFromElementIdAsync(int id)
         {
             return await _context.Moves
@@ -64,6 +66,25 @@ namespace DL
                 .Include(r => r.ElementGroupId)
                 .FirstOrDefaultAsync(r => r.Id == id);
         }
+
+        //*****************************Get All********************************
+
+
+
+        public async Task<List<Element>> GetAllElementsAsync()
+        {
+            return await _context.Elements.Select(e => e).ToListAsync();
+        }
+
+       
+        public async Task<List<Move>> GetAllMovesAsync()
+        {
+            return await _context.Moves
+                .Select(r => r).ToListAsync();
+        }
+
+
+        //*****************************Remove********************************
         public async Task RemoveMoveAsync(int id)
         {
             _context.Moves.Remove(await GetMovesFromElementIdAsync(id));
