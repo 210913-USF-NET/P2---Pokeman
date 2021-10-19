@@ -24,11 +24,20 @@ namespace WebAPI.Controllers
             return View();
         }
 
-        // GET: api/<RestaurantController>
+        /*// GET: api/<RestaurantController>
         [HttpGet]
         public IEnumerable<User> Get()
         {
-            return View();
+
+            return await _bl.GetUserList();
+        }*/
+
+        // POST api/<UserController>
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] User user)
+        {
+            User addUser = await _bl.AddUserAsync(user);
+            return Created("api/[controller]", addUser);
         }
 
         // GET: UserController/Create
