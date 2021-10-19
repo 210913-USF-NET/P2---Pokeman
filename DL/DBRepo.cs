@@ -67,11 +67,11 @@ namespace DL
         public async Task<List<ElementGroup>> ListOfElementGroupsAsync()
         {
             return await _context.ElementGroups.Select(
-                elementgroups => new ElementGroup()
+                elementGroups => new ElementGroup()
                 {
-                    Id = elementgroups.Id,
-                    Element = elementgroups.Element,
-                    ElementID = elementgroups.ElementID
+                    Id = elementGroups.Id,
+                    Element = elementGroups.Element,
+                    ElementID = elementGroups.ElementID
                 }
             ).ToListAsync();
         }
