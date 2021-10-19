@@ -18,15 +18,15 @@ namespace BL
         }
 
 
-        Task<User> createUser(User newUser)
+        /*Task<User> createUser(User newUser)
         {
             throw new NotImplementedException();
-        }
+        }*/
 
-        Task<List<User>> ListOfUsers()
+        /*Task<List<User>> ListOfUsers()
         {
             throw new NotImplementedException();
-        }
+        }*/
 
         public async Task<User> AddUserAsync(User user)
         {
@@ -34,9 +34,10 @@ namespace BL
 
         }
 
-        Task<User> SearchUser(User user)
+        /*Task<User> SearchUser(User user)
         {
             throw new NotImplementedException();
+        }*/
         }
 
 

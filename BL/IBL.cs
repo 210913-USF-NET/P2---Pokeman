@@ -11,8 +11,12 @@ namespace BL
     public interface IBL
     {
 
+        /*Task<User> createUser(User newUser);
+
+        Task<List<User>> ListOfUsers();
      
 
+        Task<User> SearchUser(User user);*/
 
         //Element
 

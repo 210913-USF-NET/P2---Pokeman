@@ -12,10 +12,16 @@ namespace DL
     {
         private PokeMatchDb _context;
 
+        public DBRepo(PokeMatchDb context)
+        {
+            _context = context;
+        }
+
+        public async Task<User> AddUserAsync(User user)
         //Element
         public async Task<Element> AddElementAsync (Element ele)
         {
-            await _context.AddAsync(ele);
+            await _context.AddAsync(user);
 
             await _context.SaveChangesAsync();
 
