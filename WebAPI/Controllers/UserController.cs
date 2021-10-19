@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class UserController : Controller
     {
         private IBL _bl;
@@ -26,13 +26,12 @@ namespace WebAPI.Controllers
             return View();
         }
 
-        /*// GET: api/<RestaurantController>
+        // GET: api/<RestaurantController>
         [HttpGet]
-        public IEnumerable<User> Get()
+        public ActionResult Get()
         {
-
-            return await _bl.GetUserList();
-        }*/
+            return View();
+        }
 
         // POST api/<UserController>
         [HttpPost]

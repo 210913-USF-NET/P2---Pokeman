@@ -11,6 +11,10 @@ namespace DL
     public class DBRepo : IRepo
     {
         private PokeMatchDb _context;
+        public DBRepo(PokeMatchDb context)
+        {
+            _context = context;
+        }
 
         public async Task<User> AddUserAsync(User user)
         {

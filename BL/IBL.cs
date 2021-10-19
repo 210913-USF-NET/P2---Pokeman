@@ -12,6 +12,6 @@ namespace BL
     {
         Task<User> AddUserAsync(User user);
 
-        public Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup);
+        Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup);
     }
 }
