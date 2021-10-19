@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class UserController : Controller
     {
         private IBL _bl;
