@@ -15,5 +15,14 @@ namespace BL
         public List<User> ListOfUsers();
 
         public User SearchUser(User user);
+
+
+        //Element
+
+        public Task<Element> AddElementAsync(Element ele);
+
+        public Task<Element> GetOneElementByIdAsync(int id);
+
+        public Task<List<Element>> GetAllElementsAsync();
     }
 }
