@@ -15,8 +15,11 @@ namespace BL
         public PokeBL(IRepo irepo)
         {
             _repo = irepo;
-        }  
+        }
 
-
+        public async Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup)
+        {
+            return await _repo.CreateElementGroupAsync(newElementGroup);
+        }
     }
 }

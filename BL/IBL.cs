@@ -11,5 +11,7 @@ namespace BL
     public interface IBL
     {
 
+
+        public Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup);
     }
 }

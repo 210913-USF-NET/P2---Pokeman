@@ -14,6 +14,8 @@ namespace DL
         public List<User> ListOfUsers();
 
         public User SearchUser(User user);
+
+        public Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup);
     }
 }
 

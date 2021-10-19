@@ -57,14 +57,14 @@ namespace DL
             return null;
         }
 
-        public async Task<ElementGroup> CreateElementGroup(ElementGroup newElementGroup)
+        public async Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup)
         {
             await _context.AddAsync(newElementGroup);
             await _context.SaveChangesAsync();
             return newElementGroup;
         }
 
-        public async Task<List<ElementGroup>> ListOfElementGroups()
+        public async Task<List<ElementGroup>> ListOfElementGroupsAsync()
         {
             return await _context.ElementGroups.Select(
                 elementgroups => new ElementGroup()
