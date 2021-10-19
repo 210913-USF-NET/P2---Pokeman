@@ -9,6 +9,9 @@ namespace Models
     public class Move
     {
         public int Id { get; set; }
+
         public string action { get; set; }
+
+        public int ElementGroupId { get; set; }
     }
 }

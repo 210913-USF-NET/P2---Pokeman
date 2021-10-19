@@ -10,7 +10,7 @@ namespace BL
 {
     public interface IBL
     {
-
+        Task<User> AddUserAsync(User user);
 
         public Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup);
     }

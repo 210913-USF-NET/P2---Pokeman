@@ -17,6 +17,11 @@ namespace BL
             _repo = irepo;
         }
 
+        public async Task<User> AddUserAsync(User user)
+        {
+            return await _repo.AddUserAsync(user);
+        }
+
         public async Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup)
         {
             return await _repo.CreateElementGroupAsync(newElementGroup);
