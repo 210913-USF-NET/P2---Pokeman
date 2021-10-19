@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
+
     [ApiController]
     [Route("[controller]")]
-
     public class UserController : Controller
     {
+
         private IBL _bl;
 
         public UserController(IBL bl)
@@ -21,15 +22,6 @@ namespace WebAPI.Controllers
             _bl = bl;
         }
 
-        /*// GET: api/<RestaurantController>
-        [HttpGet]
-        public IEnumerable<User> Get()
-        {
-
-            return await _bl.GetUserList();
-        }*/
-
-        // POST api/<UserController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] User user)
         {
