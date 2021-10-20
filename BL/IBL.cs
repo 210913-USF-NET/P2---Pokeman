@@ -35,7 +35,7 @@ namespace BL
 
         Task<Move> AddMoveAsync(Move move);
 
-        Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup);
+        Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup); //
 
 
         //------------------------------------Methods for Updating DB--------------------------------------
