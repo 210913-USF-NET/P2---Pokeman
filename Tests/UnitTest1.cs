@@ -11,7 +11,6 @@ namespace Tests
         public void ElementShouldCreate()
         {
             Element test = new Element();
-
             Assert.NotNull(test);
         }
     }

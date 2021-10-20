@@ -36,6 +36,12 @@ namespace DL
                 .Select(r => r).ToListAsync();
         }
 
+        public async Task<List<ElementGroup>> GetElementGroupAsync()
+        {
+            return await _context.ElementGroups
+                .Select(e => e).ToListAsync();
+        }
+
         //------------------------------------Methods For Getting Data by Id--------------------------------
 
         public async Task<User> GetUserByIdAsync(int id)
@@ -58,6 +64,14 @@ namespace DL
                 .AsNoTracking()
                 .Include(r => r.ElementGroupId)
                 .FirstOrDefaultAsync(r => r.Id == id);
+        }
+
+        public async Task<ElementGroup> GetElementGroupByIdAsync(int id)
+        {
+            return await _context.ElementGroups
+                .AsNoTracking()
+                .Include(e => e.Id == id)
+                .FirstOrDefaultAsync(e => e.Id == id);
         }
 
         //------------------------------------Methods for Adding To DB--------------------------------------
@@ -86,6 +100,13 @@ namespace DL
             return move;
         }
 
+        public async Task<ElementGroup> AddElementGroupAsync(ElementGroup newElementGroup)
+        {
+            await _context.AddAsync(newElementGroup);
+            await _context.SaveChangesAsync();
+            return newElementGroup;
+        }
+
         //------------------------------------Methods for Updating DB--------------------------------------
 
 
@@ -99,23 +120,8 @@ namespace DL
             _context.ChangeTracker.Clear();
         }
 
-        public async Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup)
-        {
-            await _context.AddAsync(newElementGroup);
-            await _context.SaveChangesAsync();
-            return newElementGroup;
-        }
 
-        public async Task<List<ElementGroup>> ListOfElementGroupsAsync()
-        {
-            return await _context.ElementGroups.Select(
-                elementGroups => new ElementGroup()
-                {
-                    Id = elementGroups.Id,
-                    Element = elementGroups.Element,
-                    ElementID = elementGroups.ElementID
-                }
-            ).ToListAsync();
-        }
+
+
     }
 }

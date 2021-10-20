@@ -18,6 +18,8 @@ namespace DL
 
         Task<List<Move>> GetMoveListAsync();
 
+        Task<List<ElementGroup>> GetElementGroupAsync();
+
         //------------------------------------Methods For Getting Data by Id--------------------------------
 
         Task<User> GetUserByIdAsync(int id);
@@ -26,13 +28,15 @@ namespace DL
 
         Task<Move> GetMovesFromElementIdAsync(int id);
 
+        Task<ElementGroup> GetElementGroupByIdAsync(int id);
+
         //------------------------------------Methods for Adding To DB--------------------------------------
 
         Task<User> AddUserAsync(User user);
 
         Task<Element> AddElementAsync(Element ele);
 
-        Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup);
+        Task<ElementGroup> AddElementGroupAsync(ElementGroup newElementGroup);
 
         Task<Move> AddMoveAsync(Move move);
 
