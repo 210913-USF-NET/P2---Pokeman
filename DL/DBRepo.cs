@@ -30,6 +30,7 @@ namespace DL
         {
             return await _context.Elements
                 .Include(r => r.Users)
+                .Include(r => r.Moves)
                 .Select(r => new Element()
                 {
                     Id = r.Id,
@@ -61,6 +62,7 @@ namespace DL
                             UserId = a.UserId
                             
                         }).ToList()
+
                     }).ToList(),
 
                     Moves = r.Moves.Select(e => new Move() 
@@ -85,6 +87,30 @@ namespace DL
         {
             return await _context.Users
                 .AsNoTracking()
+                .Select(r => new User() 
+                {
+                    Id = r.Id,
+                    Username = r.Username,
+                    Email = r.Email,
+                    Password = r.Password,
+                    Gender = r.Gender,
+                    Interest = r.Interest,
+                    ElementId = r.ElementId,
+
+                    Matches = r.Matches.Select(a => new Match()
+                    {
+                        Id = a.Id,
+                        Name = a.Name
+                    }).ToList(),
+
+                    Pokemons = r.Pokemons.Select(a => new Pokemon()
+                    {
+                        Id = a.Id,
+                        Name = a.Name,
+                        UserId = a.UserId
+
+                    }).ToList()
+                })
                 .FirstOrDefaultAsync(r => r.Id == id);
         }
 
@@ -92,9 +118,47 @@ namespace DL
         {
             return await _context.Elements
             .Include(r => r.Users)
-            .FirstOrDefaultAsync(e => e.Id == id);
+            .Include(r => r.Moves)
+            .AsNoTracking()
+            .Select(r => new Element()
+            {
+                Id = r.Id,
+                Name = r.Name,
 
-            
+                Users = r.Users.Select(e => new User()
+                {
+                    Id = e.Id,
+                    Username = e.Username,
+                    Email = e.Email,
+                    Password = e.Password,
+                    Gender = e.Gender,
+                    Interest = e.Interest,
+                    ElementId = e.ElementId,
+
+                    Matches = e.Matches.Select(a => new Match()
+                    {
+                        Id = a.Id,
+                        Name = a.Name
+                    }).ToList(),
+
+                    Pokemons = e.Pokemons.Select(a => new Pokemon()
+                    {
+                        Id = a.Id,
+                        Name = a.Name,
+                        UserId = a.UserId
+
+                    }).ToList()
+
+                }).ToList(),
+
+                Moves = r.Moves.Select(a => new Move()
+                {
+                    Id = a.Id,
+                    action = a.action,
+                    ElementId = a.ElementId
+                }).ToList()
+            })
+            .FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task<Move> GetMovesFromElementIdAsync(int id)
