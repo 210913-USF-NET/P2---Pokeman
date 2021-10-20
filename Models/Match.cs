@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class Matches
+    public class Match
     {
         public int Id { get; set; }
-        public List<User> users { get; set; }
+
+        public string Name { get; set; }
+
+        public int UserId { get; set; }
+
+        public List<Message> Messages { get; set; }
+
     }
 }

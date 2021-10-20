@@ -18,17 +18,13 @@ namespace BL
 
         Task<List<Move>> GetMoveListAsync();
 
-        Task<List<ElementGroup>> GetElementGroupAsync();
-
         //------------------------------------Methods For Getting Data by Id--------------------------------
 
         Task<User> GetUserByIdAsync(int id);
 
-        Task<Element> GetOneElementByIdAsync(int id);
+        Task<Element> GetElementByIdAsync(int id);
 
         Task<Move> GetMovesFromElementIdAsync(int id);
-
-        Task<ElementGroup> GetElementGroupByIdAsync(int id);
 
 
         //------------------------------------Methods for Adding To DB--------------------------------------
@@ -39,11 +35,12 @@ namespace BL
 
         Task<Move> AddMoveAsync(Move move);
 
-        Task<ElementGroup> AddElementGroupAsync(ElementGroup newElementGroup);
-
 
         //------------------------------------Methods for Updating DB--------------------------------------
 
+        Task<User> UpdateUserAsync(User user);
+
+        Task<Element> UpdateElementAsync(Element element);
 
         //------------------------------------Methods for Deleting From DB---------------------------------
 

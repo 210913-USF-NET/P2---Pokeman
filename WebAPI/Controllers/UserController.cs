@@ -44,11 +44,21 @@ namespace WebAPI.Controllers
             }
         }
 
+        // POST api/<UserController>/5
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] User user)
         {
             User addUser = await _bl.AddUserAsync(user);
             return Created("api/[controller]", addUser);
+        }
+
+        // PUT api/<UserController>/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put([FromBody] User newUser)
+        {
+            //Shrek 5ever
+            User updatedUser = await _bl.UpdateUserAsync(newUser);
+            return Ok(updatedUser);
         }
 
     }

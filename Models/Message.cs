@@ -9,12 +9,16 @@ namespace Models
     public class Message
     {
         public int Id { get; set; }
-        public string Text { get; set; }
 
-        public User Sender { get; set; }
-        public User Receiver { get; set; }
+        public string ToUser { get; set; }
 
-        public Move Skill { get; set; }
+        public string FromUser { get; set; }
+
+        public string Send { get; set; }
+
+        public string Recieve { get; set; }
+
+        public int MatchId { get; set; }
 
     }
 }

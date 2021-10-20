@@ -34,11 +34,6 @@ namespace BL
             return await _repo.GetMoveListAsync();
         }
 
-        public async Task<List<ElementGroup>> GetElementGroupAsync()
-        {
-            return await _repo.GetElementGroupAsync();
-        }
-
         //------------------------------------Methods For Getting Data by Id--------------------------------
 
         public async Task<User> GetUserByIdAsync(int id)
@@ -46,19 +41,14 @@ namespace BL
             return await _repo.GetUserByIdAsync(id);
         }
 
-        public async Task<Element> GetOneElementByIdAsync(int id)
+        public async Task<Element> GetElementByIdAsync(int id)
         {
-            return await _repo.GetOneElementByIdAsync(id);
+            return await _repo.GetElementByIdAsync(id);
         }
 
         public async Task<Move> GetMovesFromElementIdAsync(int id)
         {
             return await _repo.GetMovesFromElementIdAsync(id);
-        }
-
-        public async Task<ElementGroup> GetElementGroupByIdAsync(int id)
-        {
-            return await _repo.GetElementGroupByIdAsync(id);
         }
 
         //------------------------------------Methods for Adding To DB--------------------------------------
@@ -79,14 +69,18 @@ namespace BL
             return await _repo.AddMoveAsync(move);
         }
 
-        public async Task<ElementGroup> AddElementGroupAsync(ElementGroup newElementGroup)
-        {
-            return await _repo.AddElementGroupAsync(newElementGroup);
-        }
-
 
         //------------------------------------Methods for Updating DB--------------------------------------
 
+        public async Task<User> UpdateUserAsync(User user)
+        {
+            return await _repo.UpdateUserAsync(user);
+        }
+
+        public async Task<Element> UpdateElementAsync(Element element)
+        {
+            return await _repo.UpdateElementAsync(element);
+        }
 
         //------------------------------------Methods for Deleting From DB---------------------------------
 

@@ -12,7 +12,9 @@ namespace Models
 
         public string Name { get; set; }
 
-        ElementGroup ElementGroups { get; set; }
+        public List<User> Users { get; set; }
+
+        public List<Move> Moves { get; set; }
 
     }
 }

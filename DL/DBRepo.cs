@@ -27,19 +27,30 @@ namespace DL
 
         public async Task<List<Element>> GetElementListAsync()
         {
-            return await _context.Elements.Select(e => e).ToListAsync();
+            return await _context.Elements
+                .Include(r => r.Users)
+                .Select(r => new Element()
+                {
+                    Id = r.Id,
+                    Name = r.Name, 
+
+                    Users = r.Users.Select(e => new User()
+                    {
+                        Id = e.Id,
+                        Username = e.Username,
+                        Email = e.Email,
+                        Password = e.Password,
+                        Gender = e.Gender,
+                        Interest = e.Interest,
+                        ElementId = e.ElementId
+                    }).ToList()
+                }).ToListAsync();
         }
 
         public async Task<List<Move>> GetMoveListAsync()
         {
             return await _context.Moves
                 .Select(r => r).ToListAsync();
-        }
-
-        public async Task<List<ElementGroup>> GetElementGroupAsync()
-        {
-            return await _context.ElementGroups
-                .Select(e => e).ToListAsync();
         }
 
         //------------------------------------Methods For Getting Data by Id--------------------------------
@@ -51,7 +62,7 @@ namespace DL
                 .FirstOrDefaultAsync(r => r.Id == id);
         }
 
-        public async Task<Element> GetOneElementByIdAsync(int id)
+        public async Task<Element> GetElementByIdAsync(int id)
         {
             return await _context.Elements
             .AsNoTracking()
@@ -62,15 +73,8 @@ namespace DL
         {
             return await _context.Moves
                 .AsNoTracking()
-                .Include(r => r.ElementGroupId)
+                .Include(r => r.ElementId)
                 .FirstOrDefaultAsync(r => r.Id == id);
-        }
-
-        public async Task<ElementGroup> GetElementGroupByIdAsync(int id)
-        {
-            return await _context.ElementGroups
-                .Include(e => e.Id == id)
-                .FirstOrDefaultAsync(e => e.Id == id);
         }
 
         //------------------------------------Methods for Adding To DB--------------------------------------
@@ -99,16 +103,38 @@ namespace DL
             return move;
         }
 
-        public async Task<ElementGroup> AddElementGroupAsync(ElementGroup newElementGroup)
-        {
-            await _context.AddAsync(newElementGroup);
-            await _context.SaveChangesAsync();
-            return newElementGroup;
-        }
-
         //------------------------------------Methods for Updating DB--------------------------------------
 
+        public async Task<User> UpdateUserAsync(User user)
+        {
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
 
+            return new User()
+            {
+                Id = user.Id,
+                Username = user.Username,
+                Email = user.Email,
+                Password = user.Password,
+                Gender = user.Gender,
+                Interest = user.Interest,
+                ElementId = user.ElementId
+            };
+        }
+
+        public async Task<Element> UpdateElementAsync(Element element)
+        {
+            _context.Elements.Update(element);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+
+            return new Element()
+            {
+                Id = element.Id,
+                Name = element.Name
+            };
+        }
 
         //------------------------------------Methods for Deleting From DB---------------------------------
 
