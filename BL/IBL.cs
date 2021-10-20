@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,18 +10,33 @@ namespace BL
 {
     public interface IBL
     {
+        //------------------------------------Methods For Getting List--------------------------------------
 
-     //*****************************Adding/Creating********************************
-        Task<User> AddUserAsync(User user);
-  
-        Task<Element> AddElementAsync(Element ele);
+        Task<List<Element>> GetElementListAsync();
 
-     //*****************************Get One********************************
+        Task<List<Move>> GetMoveList();
+
+        //------------------------------------Methods For Getting Data by Id--------------------------------
 
         Task<Element> GetOneElementByIdAsync(int id);
 
-     //*****************************Get All********************************
-        Task<List<User>> GetAllUsersAsync();
-        Task<List<Element>> GetAllElementsAsync();
+        Task<Move> GetMovesFromElementIdAsync(int id);
+
+
+        //------------------------------------Methods for Adding To DB--------------------------------------
+
+        Task<User> AddUserAsync(User user);
+
+        Task<Element> AddElementAsync(Element ele);
+
+        Task<Move> AddMoveAsync(Move move);
+
+
+        //------------------------------------Methods for Updating DB--------------------------------------
+
+
+        //------------------------------------Methods for Deleting From DB---------------------------------
+
+        Task RemoveMoveAsync(int id);
     }
 }
