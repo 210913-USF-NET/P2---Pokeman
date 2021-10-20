@@ -48,6 +48,8 @@ namespace DL.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Matches");
                 });
 
@@ -75,6 +77,8 @@ namespace DL.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("MatchId");
+
                     b.ToTable("Messages");
                 });
 
@@ -93,6 +97,8 @@ namespace DL.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ElementId");
+
                     b.ToTable("Moves");
                 });
 
@@ -110,6 +116,8 @@ namespace DL.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Pokemons");
                 });
@@ -141,7 +149,73 @@ namespace DL.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ElementId");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Models.Match", b =>
+                {
+                    b.HasOne("Models.User", null)
+                        .WithMany("Matches")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Models.Message", b =>
+                {
+                    b.HasOne("Models.Match", null)
+                        .WithMany("Messages")
+                        .HasForeignKey("MatchId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Models.Move", b =>
+                {
+                    b.HasOne("Models.Element", null)
+                        .WithMany("Moves")
+                        .HasForeignKey("ElementId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Models.Pokemon", b =>
+                {
+                    b.HasOne("Models.User", null)
+                        .WithMany("Pokemons")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Models.User", b =>
+                {
+                    b.HasOne("Models.Element", null)
+                        .WithMany("Users")
+                        .HasForeignKey("ElementId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Models.Element", b =>
+                {
+                    b.Navigation("Moves");
+
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("Models.Match", b =>
+                {
+                    b.Navigation("Messages");
+                });
+
+            modelBuilder.Entity("Models.User", b =>
+                {
+                    b.Navigation("Matches");
+
+                    b.Navigation("Pokemons");
                 });
 #pragma warning restore 612, 618
         }

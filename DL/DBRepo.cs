@@ -28,7 +28,12 @@ namespace DL
 
         public async Task<List<Element>> GetElementListAsync()
         {
-            return await _context.Elements.Select(e => e).ToListAsync();
+            return await _context.Elements
+                .Select(r => new Element()
+                {
+                    Id = r.Id,
+                    Name = r.Name, 
+                }).ToListAsync();
         }
 
         public async Task<List<Move>> GetMoveListAsync()
@@ -46,7 +51,7 @@ namespace DL
                 .FirstOrDefaultAsync(r => r.Id == id);
         }
 
-        public async Task<Element> GetOneElementByIdAsync(int id)
+        public async Task<Element> GetElementByIdAsync(int id)
         {
             return await _context.Elements
             .AsNoTracking()
@@ -104,6 +109,19 @@ namespace DL
                 Gender = user.Gender,
                 Interest = user.Interest,
                 ElementId = user.ElementId
+            };
+        }
+
+        public async Task<Element> UpdateElementAsync(Element element)
+        {
+            _context.Elements.Update(element);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+
+            return new Element()
+            {
+                Id = element.Id,
+                Name = element.Name
             };
         }
 
