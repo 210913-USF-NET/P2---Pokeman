@@ -61,5 +61,11 @@ namespace WebAPI.Controllers
             return Ok(updatedUser);
         }
 
+        // PUT api/<UserController>/5
+        [HttpDelete("{id}")]
+        public async Task Delete(int id)
+        {
+            await _bl.DeleteUserAsync(id);
+        }
     }
 }

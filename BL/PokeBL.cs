@@ -89,5 +89,14 @@ namespace BL
             await _repo.RemoveMoveAsync(id);
         }
 
+        public async Task DeleteUserAsync(int id)
+        {
+            await _repo.DeleteUserAsync(id);
+        }
+
+        public async Task DeleteElementAsync(int id)
+        {
+            await _repo.DeleteElementAsync(id);
+        }
     }
 }
