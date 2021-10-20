@@ -11,12 +11,35 @@ namespace BL
     public interface IBL
     {
 
-        Task<User> AddUserAsync(User user);
-  
-        Task<Element> AddElementAsync(Element ele);
+        //------------------------------------Methods For Getting List--------------------------------------
+
+        Task<List<Element>> GetElementListAsync();
+
+        Task<List<Move>> GetMoveList();
+
+        //------------------------------------Methods For Getting Data by Id--------------------------------
 
         Task<Element> GetOneElementByIdAsync(int id);
 
-        Task<List<Element>> GetAllElementsAsync();
+        Task<Move> GetMovesFromElementIdAsync(int id);
+
+
+        //------------------------------------Methods for Adding To DB--------------------------------------
+
+        Task<User> AddUserAsync(User user);
+
+        Task<Element> AddElementAsync(Element ele);
+
+        Task<Move> AddMoveAsync(Move move);
+
+
+        //------------------------------------Methods for Updating DB--------------------------------------
+
+
+        //------------------------------------Methods for Deleting From DB---------------------------------
+
+        Task RemoveMoveAsync(int id);
+
+
     }
 }

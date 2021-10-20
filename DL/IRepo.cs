@@ -12,7 +12,15 @@ namespace DL
 
         //------------------------------------Methods For Getting List--------------------------------------
         
-        public Task<List<Element>> GetAllElementsAsync();
+        Task<List<Element>> GetElementListAsync();
+
+        Task<List<Move>> GetMoveList();
+
+        //------------------------------------Methods For Getting Data by Id--------------------------------
+
+        Task<Element> GetOneElementByIdAsync(int id);
+
+        Task<Move> GetMovesFromElementIdAsync(int id);
 
         //------------------------------------Methods for Adding To DB--------------------------------------
 
@@ -20,11 +28,15 @@ namespace DL
 
         Task<Element> AddElementAsync(Element ele);
 
+        Task<Move> AddMoveAsync(Move move);
+
 
         //------------------------------------Methods for Updating DB--------------------------------------
 
-        Task<Element> GetOneElementByIdAsync(int id);
 
+        //------------------------------------Methods for Deleting From DB---------------------------------
+
+        Task RemoveMoveAsync(int id);
     }
 }
 

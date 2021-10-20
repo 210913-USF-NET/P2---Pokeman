@@ -17,22 +17,22 @@ namespace DL
             _context = context;
         }
 
-        public async Task<User> AddUserAsync(User user)
+
+        //------------------------------------Methods For Getting List--------------------------------------
+
+        public async Task<List<Element>> GetElementListAsync()
         {
-         await _context.AddAsync(user);
-         await _context.SaveChangesAsync();
-            _context.ChangeTracker.Clear();
-          return user;
+            return await _context.Elements.Select(e => e).ToListAsync();
         }
-        
-        public async Task<Element> AddElementAsync (Element ele)
+
+        public async Task<List<Move>> GetMoveList()
         {
-            await _context.AddAsync(ele);
-            await _context.SaveChangesAsync();
-            _context.ChangeTracker.Clear();
-            return ele;
-         }
-  
+            return await _context.Moves
+                .Select(r => r).ToListAsync();
+        }
+
+        //------------------------------------Methods For Getting Data by Id--------------------------------
+
         public async Task<Element> GetOneElementByIdAsync(int id)
         {
             return await _context.Elements
@@ -40,23 +40,6 @@ namespace DL
             .FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public async Task<List<Element>> GetAllElementsAsync()
-        {
-            return await _context.Elements.Select(e => e).ToListAsync();
-        }
-
-        public async Task<Move> CreateMoveAsync(Move move)
-        {
-            await _context.AddAsync(move);
-            await _context.SaveChangesAsync();
-            _context.ChangeTracker.Clear();
-            return move;
-        }
-        public async Task<List<Move>> GetAllMovesAsync()
-        {
-            return await _context.Moves
-                .Select(r => r).ToListAsync();
-        }
         public async Task<Move> GetMovesFromElementIdAsync(int id)
         {
             return await _context.Moves
@@ -64,6 +47,39 @@ namespace DL
                 .Include(r => r.ElementGroupId)
                 .FirstOrDefaultAsync(r => r.Id == id);
         }
+
+        //------------------------------------Methods for Adding To DB--------------------------------------
+
+        public async Task<Element> AddElementAsync(Element ele)
+        {
+            await _context.AddAsync(ele);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+            return ele;
+        }
+
+        public async Task<User> AddUserAsync(User user)
+        {
+            await _context.AddAsync(user);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+            return user;
+        }
+
+        public async Task<Move> AddMoveAsync(Move move)
+        {
+            await _context.AddAsync(move);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+            return move;
+        }
+
+        //------------------------------------Methods for Updating DB--------------------------------------
+
+
+
+        //------------------------------------Methods for Deleting From DB---------------------------------
+
         public async Task RemoveMoveAsync(int id)
         {
             _context.Moves.Remove(await GetMovesFromElementIdAsync(id));
