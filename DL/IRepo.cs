@@ -39,12 +39,6 @@ namespace DL
         //------------------------------------Methods for Updating DB--------------------------------------
 
 
-        
-
-        //Element
-        public Task<Element> AddElementAsync(Element ele);
-
-
         //------------------------------------Methods for Deleting From DB---------------------------------
 
         Task RemoveMoveAsync(int id);

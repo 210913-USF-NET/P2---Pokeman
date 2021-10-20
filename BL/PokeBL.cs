@@ -69,6 +69,11 @@ namespace BL
             return await _repo.AddMoveAsync(move);
         }
 
+        public async Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup)
+        {
+            return await _repo.CreateElementGroupAsync(newElementGroup);
+        }
+
 
         //------------------------------------Methods for Updating DB--------------------------------------
 
@@ -80,9 +85,6 @@ namespace BL
             await _repo.RemoveMoveAsync(id);
         }
 
-        public async Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup)
-        {
-            return await _repo.CreateElementGroupAsync(newElementGroup);
-        }
+
     }
 }

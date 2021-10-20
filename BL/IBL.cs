@@ -35,6 +35,8 @@ namespace BL
 
         Task<Move> AddMoveAsync(Move move);
 
+        Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup);
+
 
         //------------------------------------Methods for Updating DB--------------------------------------
 
@@ -42,8 +44,7 @@ namespace BL
         //------------------------------------Methods for Deleting From DB---------------------------------
 
         Task RemoveMoveAsync(int id);
-        Task<List<Element>> GetAllElementsAsync();
 
-        Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup);
+
     }
 }
