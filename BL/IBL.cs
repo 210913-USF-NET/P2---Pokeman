@@ -12,11 +12,15 @@ namespace BL
     {
         //------------------------------------Methods For Getting List--------------------------------------
 
+        Task<List<User>> GetUserListAsync();
+
         Task<List<Element>> GetElementListAsync();
 
-        Task<List<Move>> GetMoveList();
+        Task<List<Move>> GetMoveListAsync();
 
         //------------------------------------Methods For Getting Data by Id--------------------------------
+
+        Task<User> GetUserByIdAsync(int id);
 
         Task<Element> GetOneElementByIdAsync(int id);
 

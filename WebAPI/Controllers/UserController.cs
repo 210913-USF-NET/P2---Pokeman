@@ -22,6 +22,28 @@ namespace WebAPI.Controllers
             _bl = bl;
         }
 
+        // GET: api/<UserController>
+        [HttpGet]
+        public async Task<IEnumerable<User>> Get()
+        {
+            return await _bl.GetUserListAsync();
+        }
+
+        // GET api/<UserController>/5
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            User selectedUser = await _bl.GetUserByIdAsync(id);
+            if (selectedUser != null)
+            {
+                return Ok(selectedUser);
+            }
+            else
+            {
+                return NoContent();
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] User user)
         {

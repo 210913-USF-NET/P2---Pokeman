@@ -20,18 +20,31 @@ namespace DL
 
         //------------------------------------Methods For Getting List--------------------------------------
 
+        public async Task<List<User>> GetUserListAsync()
+        {
+            return await _context.Users
+                .Select(r => r).ToListAsync();
+        }
+
         public async Task<List<Element>> GetElementListAsync()
         {
             return await _context.Elements.Select(e => e).ToListAsync();
         }
 
-        public async Task<List<Move>> GetMoveList()
+        public async Task<List<Move>> GetMoveListAsync()
         {
             return await _context.Moves
                 .Select(r => r).ToListAsync();
         }
 
         //------------------------------------Methods For Getting Data by Id--------------------------------
+
+        public async Task<User> GetUserByIdAsync(int id)
+        {
+            return await _context.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(r => r.Id == id);
+        }
 
         public async Task<Element> GetOneElementByIdAsync(int id)
         {
