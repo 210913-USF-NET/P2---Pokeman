@@ -19,17 +19,27 @@ namespace BL
 
         //------------------------------------Methods For Getting List--------------------------------------
 
+        public async Task<List<User>> GetUserListAsync()
+        {
+            return await _repo.GetUserListAsync();
+        }
+
         public async Task<List<Element>> GetElementListAsync()
         {
             return await _repo.GetElementListAsync();
         }
 
-        public async Task<List<Move>> GetMoveList()
+        public async Task<List<Move>> GetMoveListAsync()
         {
-            return await _repo.GetMoveList();
+            return await _repo.GetMoveListAsync();
         }
 
         //------------------------------------Methods For Getting Data by Id--------------------------------
+
+        public async Task<User> GetUserByIdAsync(int id)
+        {
+            return await _repo.GetUserByIdAsync(id);
+        }
 
         public async Task<Element> GetOneElementByIdAsync(int id)
         {
