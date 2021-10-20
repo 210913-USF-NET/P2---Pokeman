@@ -29,10 +29,22 @@ namespace DL
         public async Task<List<Element>> GetElementListAsync()
         {
             return await _context.Elements
+                .Include(r => r.Users)
                 .Select(r => new Element()
                 {
                     Id = r.Id,
                     Name = r.Name, 
+
+                    Users = r.Users.Select(e => new User()
+                    {
+                        Id = e.Id,
+                        Username = e.Username,
+                        Email = e.Email,
+                        Password = e.Password,
+                        Gender = e.Gender,
+                        Interest = e.Interest,
+                        ElementId = e.ElementId
+                    }).ToList()
                 }).ToListAsync();
         }
 
