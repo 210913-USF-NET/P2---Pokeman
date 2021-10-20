@@ -10,15 +10,15 @@ namespace Models
     {
         public int Id { get; set; }
 
-        public string Text { get; set; }
+        public string ToUser { get; set; }
 
-        public int UserId { get; set; }
+        public string FromUser { get; set; }
 
-        public User Sender { get; set; }
+        public string Send { get; set; }
 
-        public User Receiver { get; set; }
+        public string Recieve { get; set; }
 
-        public List<Move> Moves { get; set; }
+        public int MatchId { get; set; }
 
     }
 }

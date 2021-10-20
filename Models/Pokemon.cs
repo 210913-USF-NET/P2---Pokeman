@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class Pokemon
+    public class Pokemon
     {
+        public int id { get; set; }
+
+        public string Name { get; set; }
+
+        public int UserId { get; set; }
+
     }
 }
