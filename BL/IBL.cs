@@ -38,6 +38,7 @@ namespace BL
 
         //------------------------------------Methods for Updating DB--------------------------------------
 
+        Task<User> UpdateUserAsync(User user);
 
         //------------------------------------Methods for Deleting From DB---------------------------------
 

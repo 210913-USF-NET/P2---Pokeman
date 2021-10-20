@@ -57,7 +57,7 @@ namespace DL
         {
             return await _context.Moves
                 .AsNoTracking()
-                .Include(r => r.ElementGroupId)
+                .Include(r => r.ElementId)
                 .FirstOrDefaultAsync(r => r.Id == id);
         }
 
@@ -89,7 +89,23 @@ namespace DL
 
         //------------------------------------Methods for Updating DB--------------------------------------
 
+        public async Task<User> UpdateUserAsync(User user)
+        {
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
 
+            return new User()
+            {
+                Id = user.Id,
+                Username = user.Username,
+                Email = user.Email,
+                Password = user.Password,
+                Gender = user.Gender,
+                Interest = user.Interest,
+                ElementId = user.ElementId
+            };
+        }
 
         //------------------------------------Methods for Deleting From DB---------------------------------
 

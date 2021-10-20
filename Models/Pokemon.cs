@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class ElementGroup
+    public class Pokemon
     {
-        public int Id { get; set; }
+        public int id { get; set; }
 
-        public string Element { get; set; }
+        public string Name { get; set; }
 
-        public int ElementID { get; set; }
+        public int UserId { get; set; }
+
     }
 }

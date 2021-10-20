@@ -11,9 +11,9 @@ namespace DL
 
         public DbSet<User> Users { get; set; }
         public DbSet<Element> Elements { get; set; }
-        public DbSet<ElementGroup> ElementGroups { get; set; }
-        public DbSet<Matches> Matches { get; set; }
+        public DbSet<Match> Matches { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Move> Moves { get; set; }
+        public DbSet<Pokemon> Pokemons { get; set; }
     }
 }

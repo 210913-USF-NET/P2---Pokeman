@@ -15,12 +15,14 @@ namespace Models
 
         public string Email { get; set; }
 
-        public int ElementId { get; set; }
-
         public string Gender { get; set; }
 
         public string Interest { get; set; }
 
-        List<Element> Elements { get; set; }
+        public int ElementId { get; set; }
+
+        List<Match> Matches { get; set; }
+
+        List<Pokemon> Pokemons { get; set; }
     }
 }

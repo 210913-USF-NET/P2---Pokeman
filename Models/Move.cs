@@ -12,6 +12,6 @@ namespace Models
 
         public string action { get; set; }
 
-        public int ElementGroupId { get; set; }
+        public int ElementId { get; set; }
     }
 }
