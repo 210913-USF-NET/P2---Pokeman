@@ -72,6 +72,10 @@ namespace BL
 
         //------------------------------------Methods for Updating DB--------------------------------------
 
+        public async Task<User> UpdateUserAsync(User user)
+        {
+            return await _repo.UpdateUserAsync(user);
+        }
 
         //------------------------------------Methods for Deleting From DB---------------------------------
 

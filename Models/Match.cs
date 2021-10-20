@@ -6,19 +6,13 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class Message
+    public class Match
     {
         public int Id { get; set; }
 
-        public string Text { get; set; }
+        public string Name { get; set; }
 
         public int UserId { get; set; }
-
-        public User Sender { get; set; }
-
-        public User Receiver { get; set; }
-
-        public List<Move> Moves { get; set; }
 
     }
 }

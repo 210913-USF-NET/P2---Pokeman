@@ -13,5 +13,7 @@ namespace Models
         public string Element { get; set; }
 
         public int ElementID { get; set; }
+
+        List<User> Users { get; set; }
     }
 }
