@@ -43,8 +43,33 @@ namespace DL
                         Password = e.Password,
                         Gender = e.Gender,
                         Interest = e.Interest,
+                        ElementId = e.ElementId,
+
+                        Matches = e.Matches.Select(a => new Match() 
+                        {
+                            Id = a.Id,
+                            Name = a.Name,
+                            Messages = a.Messages,
+                            UserId = a.UserId
+
+                        }).ToList(),
+
+                        Pokemons = e.Pokemons.Select(a => new Pokemon() 
+                        {
+                            Id = a.Id,
+                            Name = a.Name,
+                            UserId = a.UserId
+                            
+                        }).ToList()
+                    }).ToList(),
+
+                    Moves = r.Moves.Select(e => new Move() 
+                    {
+                        Id = e.Id,
+                        action = e.action,
                         ElementId = e.ElementId
                     }).ToList()
+
                 }).ToListAsync();
         }
 
@@ -66,8 +91,10 @@ namespace DL
         public async Task<Element> GetElementByIdAsync(int id)
         {
             return await _context.Elements
-            .AsNoTracking()
+            .Include(r => r.Users)
             .FirstOrDefaultAsync(e => e.Id == id);
+
+            
         }
 
         public async Task<Move> GetMovesFromElementIdAsync(int id)

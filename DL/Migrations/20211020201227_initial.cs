@@ -88,14 +88,14 @@ namespace DL.Migrations
                 name: "Pokemons",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: true),
                     UserId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pokemons", x => x.id);
+                    table.PrimaryKey("PK_Pokemons", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Pokemons_Users_UserId",
                         column: x => x.UserId,
