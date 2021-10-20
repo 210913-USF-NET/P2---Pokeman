@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +10,6 @@ namespace BL
 {
     public interface IBL
     {
-
         //------------------------------------Methods For Getting List--------------------------------------
 
         Task<List<Element>> GetElementListAsync();
@@ -39,7 +38,5 @@ namespace BL
         //------------------------------------Methods for Deleting From DB---------------------------------
 
         Task RemoveMoveAsync(int id);
-
-
     }
 }

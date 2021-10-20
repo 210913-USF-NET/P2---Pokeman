@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DL.Migrations
 {
     [DbContext(typeof(PokeMatchDb))]
-    [Migration("20211015223507_initial")]
+    [Migration("20211019225954_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,9 +27,6 @@ namespace DL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int>("ElementGroupId")
-                        .HasColumnType("integer");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
@@ -106,6 +103,9 @@ namespace DL.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<int>("ElementGroupId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("action")
                         .HasColumnType("text");
 
@@ -125,6 +125,12 @@ namespace DL.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Interest")
                         .HasColumnType("text");
 
                     b.Property<int?>("MatchesId")
