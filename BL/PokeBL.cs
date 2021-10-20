@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,33 +17,28 @@ namespace BL
             _repo = irepo;
         }
 
+        //------------------------------------Methods For Getting List--------------------------------------
 
-        /*Task<User> createUser(User newUser)
+        public async Task<List<User>> GetUserListAsync()
         {
-            throw new NotImplementedException();
-        }*/
-
-        /*Task<List<User>> ListOfUsers()
-        {
-            throw new NotImplementedException();
-        }*/
-
-        public async Task<User> AddUserAsync(User user)
-        {
-            return await _repo.AddUserAsync(user);
-
+            return await _repo.GetUserListAsync();
         }
 
-        /*
-        Task<User> SearchUser(User user)
+        public async Task<List<Element>> GetElementListAsync()
         {
-            throw new NotImplementedException();
-        }*/
+            return await _repo.GetElementListAsync();
+        }
 
-        //Element
-        public async Task<Element> AddElementAsync(Element ele)
+        public async Task<List<Move>> GetMoveListAsync()
         {
-            return await _repo.AddElementAsync(ele);
+            return await _repo.GetMoveListAsync();
+        }
+
+        //------------------------------------Methods For Getting Data by Id--------------------------------
+
+        public async Task<User> GetUserByIdAsync(int id)
+        {
+            return await _repo.GetUserByIdAsync(id);
         }
 
         public async Task<Element> GetOneElementByIdAsync(int id)
@@ -51,9 +46,38 @@ namespace BL
             return await _repo.GetOneElementByIdAsync(id);
         }
 
-        public async Task<List<Element>> GetAllElementsAsync()
+        public async Task<Move> GetMovesFromElementIdAsync(int id)
         {
-            return await _repo.GetAllElementsAsync();
+            return await _repo.GetMovesFromElementIdAsync(id);
+        }
+
+        //------------------------------------Methods for Adding To DB--------------------------------------
+
+        public async Task<User> AddUserAsync(User user)
+        {
+            return await _repo.AddUserAsync(user);
+
+        }
+
+        public async Task<Element> AddElementAsync(Element ele)
+        {
+            return await _repo.AddElementAsync(ele);
+        }
+
+        public async Task<Move> AddMoveAsync(Move move)
+        {
+            return await _repo.AddMoveAsync(move);
+        }
+
+
+        //------------------------------------Methods for Updating DB--------------------------------------
+
+
+        //------------------------------------Methods for Deleting From DB---------------------------------
+
+        public async Task RemoveMoveAsync(int id)
+        {
+            await _repo.RemoveMoveAsync(id);
         }
 
         public async Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup)

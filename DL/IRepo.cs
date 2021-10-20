@@ -9,18 +9,45 @@ namespace DL
 {
     public interface IRepo
     {
-        public Task<User> AddUserAsync(User user);
 
-        public Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup);
+        //------------------------------------Methods For Getting List--------------------------------------
+
+        Task<List<User>> GetUserListAsync();
+
+        Task<List<Element>> GetElementListAsync();
+
+        Task<List<Move>> GetMoveListAsync();
+
+        //------------------------------------Methods For Getting Data by Id--------------------------------
+
+        Task<User> GetUserByIdAsync(int id);
+
+        Task<Element> GetOneElementByIdAsync(int id);
+
+        Task<Move> GetMovesFromElementIdAsync(int id);
+
+        //------------------------------------Methods for Adding To DB--------------------------------------
+
+        Task<User> AddUserAsync(User user);
+
+        Task<Element> AddElementAsync(Element ele);
+
+        Task<ElementGroup> CreateElementGroupAsync(ElementGroup newElementGroup);
+
+        Task<Move> AddMoveAsync(Move move);
+
+        //------------------------------------Methods for Updating DB--------------------------------------
+
+
         
 
         //Element
         public Task<Element> AddElementAsync(Element ele);
 
-        public Task<Element> GetOneElementByIdAsync(int id);
 
-        public Task<List<Element>> GetAllElementsAsync();
-        
+        //------------------------------------Methods for Deleting From DB---------------------------------
+
+        Task RemoveMoveAsync(int id);
     }
 }
 
