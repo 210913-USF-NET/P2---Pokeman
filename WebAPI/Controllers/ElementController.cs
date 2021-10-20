@@ -58,5 +58,12 @@ namespace WebAPI.Controllers
             Element updatedElement = await _bl.UpdateElementAsync(newElement);
             return Ok(updatedElement);
         }
+
+        // PUT api/<ElementController>/5
+        [HttpDelete("{id}")]
+        public async Task Delete(int id)
+        {
+            await _bl.DeleteElementAsync(id);
+        }
     }
 }

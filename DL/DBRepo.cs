@@ -236,5 +236,19 @@ namespace DL
             await _context.SaveChangesAsync();
             _context.ChangeTracker.Clear();
         }
+
+        public async Task DeleteUserAsync(int id)
+        {
+            _context.Users.Remove(await GetUserByIdAsync(id));
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+        }
+
+        public async Task DeleteElementAsync(int id)
+        {
+            _context.Elements.Remove(await GetElementByIdAsync(id));
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+        }
     }
 }
