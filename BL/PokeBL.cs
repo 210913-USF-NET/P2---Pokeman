@@ -41,9 +41,9 @@ namespace BL
             return await _repo.GetUserByIdAsync(id);
         }
 
-        public async Task<Element> GetOneElementByIdAsync(int id)
+        public async Task<Element> GetElementByIdAsync(int id)
         {
-            return await _repo.GetOneElementByIdAsync(id);
+            return await _repo.GetElementByIdAsync(id);
         }
 
         public async Task<Move> GetMovesFromElementIdAsync(int id)
@@ -75,6 +75,11 @@ namespace BL
         public async Task<User> UpdateUserAsync(User user)
         {
             return await _repo.UpdateUserAsync(user);
+        }
+
+        public async Task<Element> UpdateElementAsync(Element element)
+        {
+            return await _repo.UpdateElementAsync(element);
         }
 
         //------------------------------------Methods for Deleting From DB---------------------------------

@@ -22,7 +22,7 @@ namespace DL
 
         Task<User> GetUserByIdAsync(int id);
 
-        Task<Element> GetOneElementByIdAsync(int id);
+        Task<Element> GetElementByIdAsync(int id);
 
         Task<Move> GetMovesFromElementIdAsync(int id);
 
@@ -38,6 +38,8 @@ namespace DL
         //------------------------------------Methods for Updating DB--------------------------------------
 
         Task<User> UpdateUserAsync(User user);
+
+        Task<Element> UpdateElementAsync(Element element);
 
         //------------------------------------Methods for Deleting From DB---------------------------------
 

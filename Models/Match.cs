@@ -14,7 +14,7 @@ namespace Models
 
         public int UserId { get; set; }
 
-        List<Message> Messages { get; set; }
+        public List<Message> Messages { get; set; }
 
     }
 }

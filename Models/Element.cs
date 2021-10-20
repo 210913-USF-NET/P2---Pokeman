@@ -12,9 +12,9 @@ namespace Models
 
         public string Name { get; set; }
 
-        List<User> Users { get; set; }
+        public List<User> Users { get; set; }
 
-        List<Move> Moves { get; set; }
+        public List<Move> Moves { get; set; }
 
     }
 }

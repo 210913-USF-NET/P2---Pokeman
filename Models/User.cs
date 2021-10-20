@@ -21,8 +21,8 @@ namespace Models
 
         public int ElementId { get; set; }
 
-        List<Match> Matches { get; set; }
+        public List<Match> Matches { get; set; }
 
-        List<Pokemon> Pokemons { get; set; }
+        public List<Pokemon> Pokemons { get; set; }
     }
 }
