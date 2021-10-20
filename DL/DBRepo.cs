@@ -69,7 +69,6 @@ namespace DL
         public async Task<ElementGroup> GetElementGroupByIdAsync(int id)
         {
             return await _context.ElementGroups
-                .AsNoTracking()
                 .Include(e => e.Id == id)
                 .FirstOrDefaultAsync(e => e.Id == id);
         }
