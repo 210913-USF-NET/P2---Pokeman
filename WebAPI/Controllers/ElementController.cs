@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace WebAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ElementController : Controller
     {
         private IBL _bl;
