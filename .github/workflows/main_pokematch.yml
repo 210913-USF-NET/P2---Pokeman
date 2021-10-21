@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'PokeMatch'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1B36D71AE9FF45A7BE9C06B08499A111 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_65EACB1DBBCB4CCBA702188CCB1F8E49 }}
           package: .
