@@ -81,6 +81,34 @@ namespace DL
                 .Select(r => r).ToListAsync();
         }
 
+        public async Task<List<Message>> GetMessagesAsync()
+        {
+            return await _context.Messages
+                .Select(r => r).ToListAsync();
+        }
+
+        public async Task<List<Match>> GetMatchesAsync()
+        {
+            return await _context.Matches
+                .Include(r => r.Messages)
+                .Select(r => new Match()
+                {
+                    Id = r.Id,
+                    Name = r.Name,
+                    UserId = r.UserId,
+                    Messages = r.Messages.Select(e => new Message()
+                    {
+                        Id = e.Id,
+                        MatchId = e.MatchId,
+                        ToUser = e.ToUser,
+                        FromUser = e.FromUser,
+                        Recieve = e.Recieve,
+                        Send = e.Send
+                    }).ToList()
+
+                }).ToListAsync();
+        }
+
         //------------------------------------Methods For Getting Data by Id--------------------------------
 
         public async Task<User> GetUserByIdAsync(int id)
@@ -113,6 +141,8 @@ namespace DL
                 })
                 .FirstOrDefaultAsync(r => r.Id == id);
         }
+
+
 
         public async Task<Element> GetElementByIdAsync(int id)
         {
@@ -160,13 +190,51 @@ namespace DL
             })
             .FirstOrDefaultAsync(e => e.Id == id);
         }
-
+        
         public async Task<Move> GetMovesFromElementIdAsync(int id)
         {
             return await _context.Moves
                 .AsNoTracking()
                 .Include(r => r.ElementId)
                 .FirstOrDefaultAsync(r => r.Id == id);
+        }
+
+        public async Task<List<Message>> GetMessagesFromMatchIdAsync(int id)
+        {
+            return await _context.Messages
+                .AsNoTracking()
+                .Select(r => r)
+                .Where(r => r.MatchId == id).ToListAsync();
+        }
+
+        public async Task<Message> GetMessageByIdAsync(int id)
+        {
+            return await _context.Messages
+                .AsNoTracking()
+                .FirstOrDefaultAsync(r => r.Id == id);
+
+        }
+
+        public async Task<Match> GetmatchByIdAsync(int id)
+        {
+            return await _context.Matches
+                .Include(r => r.Messages)
+                .Select(r => new Match()
+                {
+                    Id = r.Id,
+                    Name = r.Name,
+                    UserId = r.UserId,
+                    Messages = r.Messages.Select(e => new Message()
+                    {
+                        Id = e.Id,
+                        MatchId = e.MatchId,
+                        ToUser = e.ToUser,
+                        FromUser = e.FromUser,
+                        Recieve = e.Recieve,
+                        Send = e.Send
+                    }).ToList()
+
+                }).FirstOrDefaultAsync(r => r.Id == id);
         }
 
         //------------------------------------Methods for Adding To DB--------------------------------------
@@ -193,6 +261,22 @@ namespace DL
             await _context.SaveChangesAsync();
             _context.ChangeTracker.Clear();
             return move;
+        }
+
+        public async Task<Message> AddMessageAsync(Message message)
+        {
+            await _context.AddAsync(message);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+            return message;
+        }
+
+        public async Task<Match> AddMatchAsync(Match match)
+        {
+            await _context.AddAsync(match);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+            return match;
         }
 
         //------------------------------------Methods for Updating DB--------------------------------------
@@ -247,6 +331,20 @@ namespace DL
         public async Task DeleteElementAsync(int id)
         {
             _context.Elements.Remove(await GetElementByIdAsync(id));
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+        }
+
+        public async Task DeleteMessageAsync(int id)
+        {
+            _context.Messages.Remove(await GetMessageByIdAsync(id));
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+        }
+
+        public async Task DeleteMatchAsync(int id)
+        {
+            _context.Matches.Remove(await GetmatchByIdAsync(id));
             await _context.SaveChangesAsync();
             _context.ChangeTracker.Clear();
         }

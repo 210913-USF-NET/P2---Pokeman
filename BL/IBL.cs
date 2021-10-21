@@ -18,6 +18,10 @@ namespace BL
 
         Task<List<Move>> GetMoveListAsync();
 
+        Task<List<Message>> GetMessageAsync();
+
+        Task<List<Match>> GetMatchAsync();
+
         //------------------------------------Methods For Getting Data by Id--------------------------------
 
         Task<User> GetUserByIdAsync(int id);
@@ -25,6 +29,10 @@ namespace BL
         Task<Element> GetElementByIdAsync(int id);
 
         Task<Move> GetMovesFromElementIdAsync(int id);
+
+        Task<List<Message>> GetMessagesFromMatchIdAsync(int id);
+
+        Task<Message> GetMessageByIdAsync(int id);
 
 
         //------------------------------------Methods for Adding To DB--------------------------------------
@@ -34,6 +42,10 @@ namespace BL
         Task<Element> AddElementAsync(Element ele);
 
         Task<Move> AddMoveAsync(Move move);
+
+        Task<Message> AddMessageAsync(Message message);
+
+        Task<Match> AddMatchAsync(Match match);
 
 
         //------------------------------------Methods for Updating DB--------------------------------------
@@ -49,5 +61,9 @@ namespace BL
         Task DeleteUserAsync(int id);
 
         Task DeleteElementAsync(int id);
+
+        Task DeleteMessageAsync(int id);
+
+        Task DeleteMatchAsync(int id);
     }
 }
