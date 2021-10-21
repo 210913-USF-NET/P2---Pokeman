@@ -18,6 +18,10 @@ namespace DL
 
         Task<List<Move>> GetMoveListAsync();
 
+        Task<List<Message>> GetMessagesAsync();
+
+        Task<List<Match>> GetMatchesAsync();
+
         //------------------------------------Methods For Getting Data by Id--------------------------------
 
         Task<User> GetUserByIdAsync(int id);
@@ -26,6 +30,12 @@ namespace DL
 
         Task<Move> GetMovesFromElementIdAsync(int id);
 
+        Task<List<Message>> GetMessagesFromMatchIdAsync(int id);
+
+        Task<Message> GetMessageByIdAsync(int id);
+
+        Task<Match> GetmatchByIdAsync(int id);
+
         //------------------------------------Methods for Adding To DB--------------------------------------
 
         Task<User> AddUserAsync(User user);
@@ -33,6 +43,10 @@ namespace DL
         Task<Element> AddElementAsync(Element ele);
 
         Task<Move> AddMoveAsync(Move move);
+
+        Task<Message> AddMessageAsync(Message message);
+
+        Task<Match> AddMatchAsync(Match match);
 
 
         //------------------------------------Methods for Updating DB--------------------------------------
@@ -48,6 +62,10 @@ namespace DL
         Task DeleteUserAsync(int id);
 
         Task DeleteElementAsync(int id);
+
+        Task DeleteMessageAsync(int id);
+
+        Task DeleteMatchAsync(int id);
     }
 }
 
