@@ -61,6 +61,5 @@ Team Members
     - Azure Webapp
     - Github Actions
     - SonarCloud
-    - ASP.NET Core MVC
     - ASP.NET CORE API 
     

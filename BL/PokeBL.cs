@@ -34,6 +34,16 @@ namespace BL
             return await _repo.GetMoveListAsync();
         }
 
+        public async Task<List<Message>> GetMessageAsync()
+        {
+            return await _repo.GetMessagesAsync();
+        }
+
+        public async Task<List<Match>> GetMatchAsync()
+        {
+            return await _repo.GetMatchesAsync();
+        }
+
         //------------------------------------Methods For Getting Data by Id--------------------------------
 
         public async Task<User> GetUserByIdAsync(int id)
@@ -49,6 +59,16 @@ namespace BL
         public async Task<Move> GetMovesFromElementIdAsync(int id)
         {
             return await _repo.GetMovesFromElementIdAsync(id);
+        }
+
+        public async Task<List<Message>> GetMessagesFromMatchIdAsync(int id)
+        {
+            return await _repo.GetMessagesFromMatchIdAsync(id);
+        }
+
+        public async Task<Message> GetMessageByIdAsync(int id)
+        {
+            return await _repo.GetMessageByIdAsync(id);
         }
 
         //------------------------------------Methods for Adding To DB--------------------------------------
@@ -69,6 +89,16 @@ namespace BL
             return await _repo.AddMoveAsync(move);
         }
 
+        public async Task<Message> AddMessageAsync(Message message)
+        {
+            return await _repo.AddMessageAsync(message);
+        }
+
+        public async Task<Match> AddMatchAsync(Match match)
+        {
+            return await _repo.AddMatchAsync(match);
+        }
+
 
         //------------------------------------Methods for Updating DB--------------------------------------
 
@@ -82,6 +112,7 @@ namespace BL
             return await _repo.UpdateElementAsync(element);
         }
 
+
         //------------------------------------Methods for Deleting From DB---------------------------------
 
         public async Task RemoveMoveAsync(int id)
@@ -89,6 +120,24 @@ namespace BL
             await _repo.RemoveMoveAsync(id);
         }
 
+        public async Task DeleteUserAsync(int id)
+        {
+            await _repo.DeleteUserAsync(id);
+        }
 
+        public async Task DeleteElementAsync(int id)
+        {
+            await _repo.DeleteElementAsync(id);
+        }
+
+        public async Task DeleteMessageAsync(int id)
+        {
+            await _repo.DeleteMessageAsync(id);
+        }
+
+        public async Task DeleteMatchAsync(int id)
+        {
+            await _repo.DeleteMatchAsync(id);
+        }
     }
 }
