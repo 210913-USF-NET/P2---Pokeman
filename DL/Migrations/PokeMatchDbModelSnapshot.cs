@@ -147,6 +147,9 @@ namespace DL.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("text");
 
+                    b.Property<string>("profilepic")
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ElementId");

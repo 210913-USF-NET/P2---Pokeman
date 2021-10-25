@@ -51,7 +51,8 @@ namespace DL.Migrations
                     Email = table.Column<string>(type: "text", nullable: true),
                     Gender = table.Column<string>(type: "text", nullable: true),
                     Interest = table.Column<string>(type: "text", nullable: true),
-                    ElementId = table.Column<int>(type: "integer", nullable: false)
+                    ElementId = table.Column<int>(type: "integer", nullable: false),
+                    profilepic = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
