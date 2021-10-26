@@ -123,6 +123,7 @@ namespace DL
                     Gender = r.Gender,
                     Interest = r.Interest,
                     ElementId = r.ElementId,
+                    profilepic = r.profilepic,
 
                     Matches = r.Matches.Select(a => new Match()
                     {
@@ -163,6 +164,8 @@ namespace DL
                     Gender = e.Gender,
                     Interest = e.Interest,
                     ElementId = e.ElementId,
+                    profilepic = e.profilepic,
+
 
                     Matches = e.Matches.Select(a => new Match()
                     {
@@ -294,7 +297,8 @@ namespace DL
                 Password = user.Password,
                 Gender = user.Gender,
                 Interest = user.Interest,
-                ElementId = user.ElementId
+                ElementId = user.ElementId,
+                profilepic = user.profilepic,
             };
         }
 

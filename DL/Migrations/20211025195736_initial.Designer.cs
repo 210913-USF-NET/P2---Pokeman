@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DL.Migrations
 {
     [DbContext(typeof(PokeMatchDb))]
-    [Migration("20211020201227_initial")]
+    [Migration("20211025195736_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -147,6 +147,9 @@ namespace DL.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Username")
+                        .HasColumnType("text");
+
+                    b.Property<string>("profilepic")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
