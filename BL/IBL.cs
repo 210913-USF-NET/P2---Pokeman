@@ -34,6 +34,8 @@ namespace BL
 
         Task<Message> GetMessageByIdAsync(int id);
 
+        Task<Match> GetMatchByIdAsync(int id);
+
 
         //------------------------------------Methods for Adding To DB--------------------------------------
 
