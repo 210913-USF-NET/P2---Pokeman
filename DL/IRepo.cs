@@ -57,7 +57,7 @@ namespace DL
 
         //------------------------------------Methods for Deleting From DB---------------------------------
 
-        Task RemoveMoveAsync(int id);
+        Task DeleteMoveAsync(int id);
 
         Task DeleteUserAsync(int id);
 
