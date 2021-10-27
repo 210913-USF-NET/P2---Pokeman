@@ -82,6 +82,17 @@ namespace Tests
                  
 
                         );
+                context.Matches.Add(
+                      new Models.Match()
+                      { 
+                        Id = 1,
+                        Name = "Test",
+                        ImgUrl = "test",
+                        UserId = 1,
+                        UserId2 = 2
+                        }
+                    
+                    );
                     //context.Pokemons.Add(
                     //    new Pokemon()
                     //    {
@@ -248,7 +259,7 @@ namespace Tests
                 IRepo repo = new DBRepo(context);
                 Models.Match matchToAdd = new Models.Match()
                 {
-                    Id = 1,
+                    Id = 2,
                     Name = "Gravy",
                     ImgUrl = "test",
                     UserId = 1,
@@ -261,10 +272,10 @@ namespace Tests
 
             using (var context = new PokeMatchDb(options))
             {
-                Models.Match mat = context.Matches.FirstOrDefault(m => m.Id == 1);
+                Models.Match mat = context.Matches.FirstOrDefault(m => m.Id == 2);
 
                 Assert.NotNull(mat);
-                Assert.Equal(1, mat.Id);
+                Assert.Equal(2, mat.Id);
                 Assert.Equal("Gravy", mat.Name);
                 Assert.Equal("test", mat.ImgUrl);
                 Assert.Equal(1, mat.UserId);
