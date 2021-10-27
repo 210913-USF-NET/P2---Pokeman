@@ -29,33 +29,38 @@ namespace Tests
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
 
-                //context.Users.AddRange(
-                //    new User()
-                //    {
+                context.Users.AddRange(
+                    new List<User>
+                    {
+                    new User()
+                    {
 
-                //        Id = 12,
-                //        Username = "Pokepal",
-                //        Password = "123",
-                //        Email = "fake@yahoo.com",
-                //        Gender = "Female",
-                //        Interest = "Female",
-                //        ElementId = 4
+                        Id = 1,
+                        Username = "Pokepal",
+                        Password = "123",
+                        Email = "fake@yahoo.com",
+                        Gender = "Female",
+                        Interest = "Female",
+                         profilepic = "test",
+                        ElementId = 4
 
 
 
-                //    },
-                //new User()
-                //{
-                //    Id = 13,
-                //    Username = "MonCollector",
-                //    Password = "123",
-                //    Email = "lovebird@aol.com",
-                //    Gender = "Male",
-                //    Interest = "Male",
-                //    ElementId = 5
+                    },
+                new User()
+                {
+                    Id = 2,
+                    Username = "MonCollector",
+                    Password = "123",
+                    Email = "lovebird@aol.com",
+                    Gender = "Male",
+                    Interest = "Male",
+                    profilepic = "test",
+                    ElementId = 5
 
-                //}
-                //);
+                }
+                }
+                );
 
                 context.Elements.AddRange(
                     new List<Element> 
@@ -111,6 +116,7 @@ namespace Tests
                     Email = "test@gmail.com",
                     Gender = "Male",
                     Interest = "Other",
+                    profilepic = "test",
                     ElementId = 4
                 };
 
@@ -127,6 +133,7 @@ namespace Tests
                 Assert.Equal("test@gmail.com", user.Email);
                 Assert.Equal("Male", user.Gender);
                 Assert.Equal("Other", user.Interest);
+                Assert.Equal("test", user.profilepic);
                 Assert.Equal(4, user.ElementId);
 
 
@@ -199,71 +206,58 @@ namespace Tests
             }
         }
 
-        //[Fact]
-        //public void RemovingElementShouldRemove()
-        //{
-        //    using (var context = new PokeMatchDb(options))
-        //    {
-        //        //Arrange with my repo and the item i'm going to add
-        //        IRepo repo = new DBRepo(context);
-        //        Element eleToRemove = repo.GetElementByIdAsync(1);
-
-        //        //Act
-        //        repo.DeleteElementAsync(eleToRemove);
-        //    }
-
-        //    using (var context = new PokeMatchDb(options))
-        //    {
-        //        //Assert
-        //        Element element = context.Elements.FirstOrDefault(r => r.Id == 1);
-
-        //        Assert.Null(element);
-        //    }
-        //}
-
-        //[Fact]
-        //public void AddingAnPokemonShouldAddAnPokemon()
-        //{
-        //    using (var context = new PokeMatchDb(options))
-        //    {
-        //        IRepo repo = new DBRepo(context);
-        //        Pokemon pokeToAdd = new Pokemon()
-        //        {
-        //            Id = 1,
-        //            Name = "bulbasaur"
-        //        };
-
-        //        repo.AddPokemonAsync(pokeToAdd);
-        //    }
-
-        //    using (var context = new PokeMatchDb(options))
-        //    {
-        //        Pokemon poke = context.Pokemons.FirstOrDefault(p => p.Id == 6);
-
-        //        Assert.NotNull(poke);
-        //        Assert.Equal(1, poke.Id);
-        //        Assert.Equal("bulbasaur", poke.Name);
-        //    }
-        //}
 
 
-        //[Fact]
-        //public void GetAllUsersShouldGetAllUsers()
-        //{
-        //    List<User> allUsers = new List<User>();
-        //    using (var context = new PokeMatchDb(options))
-        //    {
-        //        //Arrange
-        //        IRepo repo = new DBRepo(context);
+        [Fact]
+        public async void AddingAPokemonShouldAddAPokemon()
+        {
+            using (var context = new PokeMatchDb(options))
+            {
+                IRepo repo = new DBRepo(context);
+                Pokemon pokeToAdd = new Pokemon()
+                {
+                    Id = 4,
+                    Name = "mew",
+                    Hp = 100,
+                    ImgUrl = "test",
+                    UserId = 1
+                };
 
-        //        //Act
-        //        var users = repo.GetUserListAsync();
+                await repo.AddPokemonAsync(pokeToAdd);
+            }
 
-        //        //Assert
+            using (var context = new PokeMatchDb(options))
+            {
+                Pokemon poke = context.Pokemons.FirstOrDefault(p => p.Id == 4);
 
-        //        Assert.Equal(2, allUsers.Count);
-        //    }
-        //}
+                Assert.NotNull(poke);
+                Assert.Equal(4, poke.Id);
+                Assert.Equal("mew", poke.Name);
+                Assert.Equal(100, poke.Hp);
+                Assert.Equal("test", poke.ImgUrl);
+                Assert.Equal(1, poke.UserId);
+            }
+        }
+
+
+        [Fact]
+        public async void GetAllUsersShouldGetAllUsers()
+        {
+            
+            using (var context = new PokeMatchDb(options))
+            {
+                //Arrange
+                IRepo repo = new DBRepo(context);
+
+                //Act
+                var users = await repo.GetUserListAsync();
+
+                //Assert
+                Assert.NotNull(users);
+                Assert.Equal(2, users.Count);
+            }
+        }
 
     }
 }
+
