@@ -120,9 +120,9 @@ namespace BL
 
         //------------------------------------Methods for Deleting From DB---------------------------------
 
-        public async Task RemoveMoveAsync(int id)
+        public async Task DeleteMoveAsync(int id)
         {
-            await _repo.RemoveMoveAsync(id);
+            await _repo.DeleteMoveAsync(id);
         }
 
         public async Task DeleteUserAsync(int id)

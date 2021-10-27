@@ -319,7 +319,7 @@ namespace DL
 
         //------------------------------------Methods for Deleting From DB---------------------------------
 
-        public async Task RemoveMoveAsync(int id)
+        public async Task DeleteMoveAsync(int id)
         {
             _context.Moves.Remove(await GetMovesFromElementIdAsync(id));
             await _context.SaveChangesAsync();
