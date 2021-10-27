@@ -36,6 +36,7 @@ namespace DL
                     {
                         Id = a.Id,
                         Name = a.Name,
+                        ImgUrl = a.ImgUrl,
                         Messages = a.Messages,
                         UserId = a.UserId,
                         UserId2 = a.UserId2
@@ -82,6 +83,7 @@ namespace DL
                         {
                             Id = a.Id,
                             Name = a.Name,
+                            ImgUrl = a.ImgUrl,
                             Messages = a.Messages,
                             UserId = a.UserId,
                             UserId2 = a.UserId2
@@ -128,6 +130,7 @@ namespace DL
                 {
                     Id = r.Id,
                     Name = r.Name,
+                    ImgUrl = r.ImgUrl,
                     UserId = r.UserId,
                     UserId2 = r.UserId2,
 
@@ -167,8 +170,10 @@ namespace DL
                     {
                         Id = a.Id,
                         Name = a.Name,
+                        ImgUrl = a.ImgUrl,
                         Messages = a.Messages,
-                        UserId = a.UserId
+                        UserId = a.UserId,
+                        UserId2 = a.UserId2
 
                     }).ToList(),
 
