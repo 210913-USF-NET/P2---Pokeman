@@ -44,6 +44,11 @@ namespace BL
             return await _repo.GetMatchesAsync();
         }
 
+        public async Task<List<Pokemon>> GetPokemonAsync()
+        {
+            return await _repo.GetPokemonAsync();
+        }
+
         //------------------------------------Methods For Getting Data by Id--------------------------------
 
         public async Task<User> GetUserByIdAsync(int id)
@@ -76,6 +81,11 @@ namespace BL
             return await _repo.GetMatchByIdAsync(id);
         }
 
+        public async Task<Pokemon> GetPokemonByIdAsync(int id)
+        {
+            return await _repo.GetPokemonByIdAsync(id);
+        }
+
         //------------------------------------Methods for Adding To DB--------------------------------------
 
         public async Task<User> AddUserAsync(User user)
@@ -104,6 +114,11 @@ namespace BL
             return await _repo.AddMatchAsync(match);
         }
 
+        public async Task<Pokemon> AddPokemonAsync(Pokemon pokemon)
+        {
+            return await _repo.AddPokemonAsync(pokemon);
+        }
+
 
         //------------------------------------Methods for Updating DB--------------------------------------
 
@@ -117,12 +132,22 @@ namespace BL
             return await _repo.UpdateElementAsync(element);
         }
 
+        public async Task<Pokemon> UpdatePokemonAsync(Pokemon pokemon)
+        {
+            return await _repo.UpdatePokemonAsync(pokemon);
+        }
+
 
         //------------------------------------Methods for Deleting From DB---------------------------------
 
         public async Task DeleteMoveAsync(int id)
         {
             await _repo.DeleteMoveAsync(id);
+        }
+
+        public async Task DeletePokemonAsync(int id)
+        {
+            await _repo.DeletePokemonAsync(id);
         }
 
         public async Task DeleteUserAsync(int id)
