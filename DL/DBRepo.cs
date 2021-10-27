@@ -285,7 +285,7 @@ namespace DL
                     Name = r.Name,
                     ImgUrl = r.ImgUrl,
                     UserId = r.UserId,
-                    UserId2 = r.UserId2
+                    UserId2 = r.UserId2,
                     Messages = r.Messages.Select(e => new Message()
                     {
                         Id = e.Id,
