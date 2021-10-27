@@ -28,37 +28,40 @@ namespace Tests
             {
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
-                
-                context.Users.AddRange(
-                    new User()
-                    {
 
-                        Id = 12,
-                        Username = "Pokepal",
-                        Password = "123",
-                        Email = "fake@yahoo.com",
-                        Gender = "Female",
-                        Interest = "Female",
-                        ElementId = 4
+                //context.Users.AddRange(
+                //    new User()
+                //    {
+
+                //        Id = 12,
+                //        Username = "Pokepal",
+                //        Password = "123",
+                //        Email = "fake@yahoo.com",
+                //        Gender = "Female",
+                //        Interest = "Female",
+                //        ElementId = 4
 
 
 
-                    },
-                new User()
-                {
-                    Id = 13,
-                    Username = "MonCollector",
-                    Password = "123",
-                    Email = "lovebird@aol.com",
-                    Gender = "Male",
-                    Interest = "Male",
-                    ElementId = 5
+                //    },
+                //new User()
+                //{
+                //    Id = 13,
+                //    Username = "MonCollector",
+                //    Password = "123",
+                //    Email = "lovebird@aol.com",
+                //    Gender = "Male",
+                //    Interest = "Male",
+                //    ElementId = 5
 
-                }
-                );
+                //}
+                //);
 
                 context.Elements.AddRange(
-                    new Element()
+                    new List<Element> 
+                    {
+
+                       new Element()
                     {
                         Id = 4,
                         Name = "Bug"
@@ -69,52 +72,69 @@ namespace Tests
                         Id = 5,
                         Name = "Electric"
                     }
-                    
-                    );
+
+                    }
+                 
+
+                        );
+                    //context.Pokemons.Add(
+                    //    new Pokemon()
+                    //    {
+                    //        Id = 1,
+                    //        Name = "bulbasaur"
+
+
+                    //    }
+                    //new Pokemon()
+                    //{
+                    //    Id = 2,
+                    //    Name = "ivysaur"
+                    //}
+                    //);
 
                 context.SaveChanges();
             }
         }
 
 
-        //[Fact]
-        //public async Task AddingUserShouldAddUser()
-        //{
-        //    await using (var context =  new PokeMatchDb(options))
-        //    {
-        //        IRepo repo = new DBRepo(context);
-        //       User userToAdd = new User()
-        //        {
-        //            Id = 3,
-        //            Username = "AshK",
-        //            Password = "123",
-        //            Email = "testc@gmail.com",
-        //            Gender = "Male",
-        //            Interest = "Other",
-        //            ElementId = 2
-        //        };
+        [Fact]
+        public void AddingUserShouldAddUser()
+        {
+            using (var context = new PokeMatchDb(options))
+            {
+                IRepo repo = new DBRepo(context);
+                User userToAdd = new User()
+                {
+                    Id = 3,
+                    Username = "AshK",
+                    Password = "123",
+                    Email = "test@gmail.com",
+                    Gender = "Male",
+                    Interest = "Other",
+                    ElementId = 4
+                };
 
-        //        repo.AddUserAsync(userToAdd);
-        //    }
+                repo.AddUserAsync(userToAdd);
+            }
 
-        //    await using(var context = new PokeMatchDb(options))
-        //    {
-        //        User user = context.Users.FirstOrDefault(u => u.Id == 3);
+            using (var context = new PokeMatchDb(options))
+            {
+                User user = context.Users.FirstOrDefault(u => u.Id == 3);
 
-        //        Assert.NotNull(user);
-        //        Assert.Equal("AshK", user.Username);
-        //        Assert.Equal("123", user.Password);
-        //        Assert.Equal("test@gmail.com", user.Email);
-        //        Assert.Equal("Male", user.Gender);
-        //        Assert.Equal("Interest", user.Interest);
-        //        Assert.Equal(2, user.ElementId);
-               
-                
-        //    }
-        //}
+                Assert.NotNull(user);
+                Assert.Equal("AshK", user.Username);
+                Assert.Equal("123", user.Password);
+                Assert.Equal("test@gmail.com", user.Email);
+                Assert.Equal("Male", user.Gender);
+                Assert.Equal("Other", user.Interest);
+                Assert.Equal(4, user.ElementId);
+
+
+            }
+        }
 
         [Fact]
-        public void AddingAnElementShouldAddAnElement()
+        public async void AddingAnElementShouldAddAnElement()
         {
             using (var context = new PokeMatchDb(options))
             {
@@ -125,7 +145,7 @@ namespace Tests
                     Name = "Fairy"
                 };
 
-                repo.AddElementAsync(eleToAdd);
+                await repo.AddElementAsync(eleToAdd);
             }
 
             using (var context = new PokeMatchDb(options))
@@ -137,6 +157,94 @@ namespace Tests
                 Assert.Equal("Fairy", ele.Name);
             }
         }
+
+        [Fact]
+        public async void GetAllElementsShouldGetAllElements()
+        {
+            using (var context = new PokeMatchDb(options))
+            {
+
+                IRepo repo = new DBRepo(context);
+
+
+                var elements = await repo.GetElementListAsync();
+
+                Assert.NotNull(elements);
+                Assert.Equal(2, elements.Count);
+            }
+        }
+
+        [Fact]
+        public async void UpdatingElementShouldUpdate()
+        {
+            using (var context = new PokeMatchDb(options))
+            {
+
+                IRepo repo = new DBRepo(context);
+                Element elementToUpdate = await repo.GetElementByIdAsync(4);
+
+                elementToUpdate.Name = "Dark";
+
+
+                await repo.UpdateElementAsync(elementToUpdate);
+            }
+
+            using (var context = new PokeMatchDb(options))
+            {
+
+                Element element = context.Elements.FirstOrDefault(e => e.Id == 4);
+
+                Assert.NotNull(element);
+                Assert.Equal("Dark", element.Name);
+            }
+        }
+
+        //[Fact]
+        //public void RemovingElementShouldRemove()
+        //{
+        //    using (var context = new PokeMatchDb(options))
+        //    {
+        //        //Arrange with my repo and the item i'm going to add
+        //        IRepo repo = new DBRepo(context);
+        //        Element eleToRemove = repo.GetElementByIdAsync(1);
+
+        //        //Act
+        //        repo.DeleteElementAsync(eleToRemove);
+        //    }
+
+        //    using (var context = new PokeMatchDb(options))
+        //    {
+        //        //Assert
+        //        Element element = context.Elements.FirstOrDefault(r => r.Id == 1);
+
+        //        Assert.Null(element);
+        //    }
+        //}
+
+        //[Fact]
+        //public void AddingAnPokemonShouldAddAnPokemon()
+        //{
+        //    using (var context = new PokeMatchDb(options))
+        //    {
+        //        IRepo repo = new DBRepo(context);
+        //        Pokemon pokeToAdd = new Pokemon()
+        //        {
+        //            Id = 1,
+        //            Name = "bulbasaur"
+        //        };
+
+        //        repo.AddPokemonAsync(pokeToAdd);
+        //    }
+
+        //    using (var context = new PokeMatchDb(options))
+        //    {
+        //        Pokemon poke = context.Pokemons.FirstOrDefault(p => p.Id == 6);
+
+        //        Assert.NotNull(poke);
+        //        Assert.Equal(1, poke.Id);
+        //        Assert.Equal("bulbasaur", poke.Name);
+        //    }
+        //}
 
 
         //[Fact]
@@ -152,7 +260,7 @@ namespace Tests
         //        var users = repo.GetUserListAsync();
 
         //        //Assert
-                
+
         //        Assert.Equal(2, allUsers.Count);
         //    }
         //}
