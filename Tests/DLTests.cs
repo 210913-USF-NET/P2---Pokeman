@@ -78,9 +78,9 @@ namespace Tests
 
 
         [Fact]
-        public void AddingUserShouldAddUser()
+        public async Task AddingUserShouldAddUser()
         {
-            using (var context = new PokeMatchDb(options))
+            using (var context =  new PokeMatchDb(options))
             {
                 IRepo repo = new DBRepo(context);
                User userToAdd = new User()
