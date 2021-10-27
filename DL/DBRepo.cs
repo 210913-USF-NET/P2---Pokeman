@@ -216,7 +216,11 @@ namespace DL
                     Matches = e.Matches.Select(a => new Match()
                     {
                         Id = a.Id,
-                        Name = a.Name
+                        Name = a.Name,
+                        ImgUrl = a.ImgUrl,
+                        Messages = a.Messages,
+                        UserId = a.UserId,
+                        UserId2 = a.UserId2
                     }).ToList(),
 
                     Pokemons = e.Pokemons.Select(a => new Pokemon()
@@ -279,7 +283,9 @@ namespace DL
                 {
                     Id = r.Id,
                     Name = r.Name,
+                    ImgUrl = r.ImgUrl,
                     UserId = r.UserId,
+                    UserId2 = r.UserId2
                     Messages = r.Messages.Select(e => new Message()
                     {
                         Id = e.Id,
