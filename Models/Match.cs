@@ -10,9 +10,13 @@ namespace Models
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Username { get; set; }
+
+        public string ImgUrl { get; set; }
 
         public int UserId { get; set; }
+
+        public int UserId2 { get; set; }
 
         public List<Message> Messages { get; set; }
 
