@@ -31,6 +31,7 @@ namespace DL
                     Gender = r.Gender,
                     Interest = r.Interest,
                     ElementId = r.ElementId,
+                    profilepic = r.profilepic,
 
                     Matches = r.Matches.Select(a => new Match()
                     {
@@ -80,6 +81,7 @@ namespace DL
                         Gender = e.Gender,
                         Interest = e.Interest,
                         ElementId = e.ElementId,
+                        profilepic = e.profilepic,
 
                         Matches = e.Matches.Select(a => new Match() 
                         {
@@ -96,8 +98,10 @@ namespace DL
                         {
                             Id = a.Id,
                             Name = a.Name,
+                            Hp = a.Hp,
+                            ImgUrl = a.ImgUrl,
                             UserId = a.UserId
-                            
+
                         }).ToList()
 
                     }).ToList(),
@@ -183,6 +187,8 @@ namespace DL
                     {
                         Id = a.Id,
                         Name = a.Name,
+                        Hp = a.Hp,
+                        ImgUrl = a.ImgUrl,
                         UserId = a.UserId
 
                     }).ToList()
@@ -229,6 +235,8 @@ namespace DL
                     {
                         Id = a.Id,
                         Name = a.Name,
+                        Hp = a.Hp,
+                        ImgUrl = a.ImgUrl,
                         UserId = a.UserId
 
                     }).ToList()
@@ -391,7 +399,15 @@ namespace DL
             _context.Pokemons.Update(pokemon);
             await _context.SaveChangesAsync();
             _context.ChangeTracker.Clear();
-            return pokemon;
+
+            return new Pokemon()
+            {
+                Id = pokemon.Id,
+                Name = pokemon.Name,
+                Hp = pokemon.Hp,
+                ImgUrl = pokemon.ImgUrl,
+                UserId = pokemon.UserId
+            };
         }
 
         //------------------------------------Methods for Deleting From DB---------------------------------
