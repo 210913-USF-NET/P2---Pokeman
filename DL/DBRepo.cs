@@ -23,6 +23,37 @@ namespace DL
         public async Task<List<User>> GetUserListAsync()
         {
             return await _context.Users
+                .Select(r => new User() {
+                    Id = r.Id,
+                    Username = r.Username,
+                    Email = r.Email,
+                    Password = r.Password,
+                    Gender = r.Gender,
+                    Interest = r.Interest,
+                    ElementId = r.ElementId,
+
+                    Matches = r.Matches.Select(a => new Match()
+                    {
+                        Id = a.Id,
+                        Name = a.Name,
+                        Messages = a.Messages,
+                        UserId = a.UserId
+
+                    }).ToList(),
+
+                    Pokemons = r.Pokemons.Select(a => new Pokemon()
+                    {
+                        Id = a.Id,
+                        Name = a.Name,
+                        UserId = a.UserId
+
+                    }).ToList()
+                }).ToListAsync();
+        }
+
+        public async Task<List<Pokemon>> GetPokemonAsync()
+        {
+            return await _context.Pokemons
                 .Select(r => r).ToListAsync();
         }
 
@@ -202,6 +233,14 @@ namespace DL
                 .FirstOrDefaultAsync(r => r.Id == id);
         }
 
+        public async Task<Pokemon> GetPokemonByIdAsync(int id)
+        {
+            return await _context.Pokemons
+                .AsNoTracking()
+                .Include(r => r.UserId)
+                .FirstOrDefaultAsync(r => r.Id == id);
+        }
+
         public async Task<List<Message>> GetMessagesFromMatchIdAsync(int id)
         {
             return await _context.Messages
@@ -248,6 +287,14 @@ namespace DL
             await _context.SaveChangesAsync();
             _context.ChangeTracker.Clear();
             return ele;
+        }
+
+        public async Task<Pokemon> AddPokemonAsync(Pokemon pokemon)
+        {
+            await _context.AddAsync(pokemon);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+            return pokemon;
         }
 
         public async Task<User> AddUserAsync(User user)
@@ -317,11 +364,26 @@ namespace DL
             };
         }
 
+        public async Task<Pokemon> UpdatePokemonAsync(Pokemon pokemon)
+        {
+            _context.Pokemons.Update(pokemon);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+            return pokemon;
+        }
+
         //------------------------------------Methods for Deleting From DB---------------------------------
 
         public async Task DeleteMoveAsync(int id)
         {
             _context.Moves.Remove(await GetMovesFromElementIdAsync(id));
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+        }
+
+        public async Task DeletePokemonAsync(int id)
+        {
+            _context.Pokemons.Remove(await GetPokemonByIdAsync(id));
             await _context.SaveChangesAsync();
             _context.ChangeTracker.Clear();
         }
