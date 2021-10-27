@@ -12,7 +12,11 @@ namespace Models
 
         public string Name { get; set; }
 
+        public string ImgUrl { get; set; }
+
         public int UserId { get; set; }
+
+        public int UserId2 { get; set; }
 
         public List<Message> Messages { get; set; }
 

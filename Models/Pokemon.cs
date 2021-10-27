@@ -12,6 +12,10 @@ namespace Models
 
         public string Name { get; set; }
 
+        public int Hp { get; set; }
+
+        public string ImgUrl { get; set; }
+
         public int UserId { get; set; }
 
     }
