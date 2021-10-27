@@ -82,6 +82,17 @@ namespace Tests
                  
 
                         );
+                context.Matches.Add(
+                      new Models.Match()
+                      { 
+                        Id = 1,
+                        Name = "Test",
+                        ImgUrl = "test",
+                        UserId = 1,
+                        UserId2 = 2
+                        }
+                    
+                    );
                     //context.Pokemons.Add(
                     //    new Pokemon()
                     //    {
@@ -241,6 +252,38 @@ namespace Tests
 
 
         [Fact]
+        public async void AddingAMatchShouldAddAMatch()
+        {
+            using (var context = new PokeMatchDb(options))
+            {
+                IRepo repo = new DBRepo(context);
+                Models.Match matchToAdd = new Models.Match()
+                {
+                    Id = 2,
+                    Name = "Gravy",
+                    ImgUrl = "test",
+                    UserId = 1,
+                    UserId2 = 2
+                    
+                };
+
+                await repo.AddMatchAsync(matchToAdd);
+            }
+
+            using (var context = new PokeMatchDb(options))
+            {
+                Models.Match mat = context.Matches.FirstOrDefault(m => m.Id == 2);
+
+                Assert.NotNull(mat);
+                Assert.Equal(2, mat.Id);
+                Assert.Equal("Gravy", mat.Name);
+                Assert.Equal("test", mat.ImgUrl);
+                Assert.Equal(1, mat.UserId);
+                Assert.Equal(2, mat.UserId2);
+            }
+        }
+
+        [Fact]
         public async void GetAllUsersShouldGetAllUsers()
         {
             
@@ -255,6 +298,40 @@ namespace Tests
                 //Assert
                 Assert.NotNull(users);
                 Assert.Equal(2, users.Count);
+            }
+        }
+
+        [Fact]
+        public async void AddingAMessageShouldAddAMessage()
+        {
+            using (var context = new PokeMatchDb(options))
+            {
+                IRepo repo = new DBRepo(context);
+                Message mssgToAdd = new Message()
+                {
+                    Id = 1,
+                    ToUser = "Joy",
+                    FromUser = "Jenny",
+                    Send = "Hello!",
+                    Recieve = "Hiya",
+                    MatchId = 1
+
+                };
+
+                await repo.AddMessageAsync(mssgToAdd);
+            }
+
+            using (var context = new PokeMatchDb(options))
+            {
+                Message mssg = context.Messages.FirstOrDefault(m => m.Id == 1);
+
+                Assert.NotNull(mssg);
+                Assert.Equal(1, mssg.Id);
+                Assert.Equal("Joy", mssg.ToUser);
+                Assert.Equal("Jenny", mssg.FromUser);
+                Assert.Equal("Hello!", mssg.Send);
+                Assert.Equal("Hiya", mssg.Recieve);
+                Assert.Equal(1, mssg.MatchId);
             }
         }
 
