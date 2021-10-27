@@ -300,6 +300,7 @@ namespace DL
                 Interest = user.Interest,
                 ElementId = user.ElementId,
                 profilepic = user.profilepic,
+                Pokemons = user.Pokemons
             };
         }
 
