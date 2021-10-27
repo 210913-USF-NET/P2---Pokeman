@@ -144,6 +144,8 @@ namespace DL
         public async Task<User> GetUserByIdAsync(int id)
         {
             return await _context.Users
+                .Include(r => r.Matches)
+                .Include(r => r.Pokemons)
                 .AsNoTracking()
                 .Select(r => new User() 
                 {
@@ -159,7 +161,10 @@ namespace DL
                     Matches = r.Matches.Select(a => new Match()
                     {
                         Id = a.Id,
-                        Name = a.Name
+                        Name = a.Name,
+                        Messages = a.Messages,
+                        UserId = a.UserId
+
                     }).ToList(),
 
                     Pokemons = r.Pokemons.Select(a => new Pokemon()
