@@ -71,6 +71,11 @@ namespace BL
             return await _repo.GetMessageByIdAsync(id);
         }
 
+        public async Task<Match> GetMatchByIdAsync(int id)
+        {
+            return await _repo.GetMatchByIdAsync(id);
+        }
+
         //------------------------------------Methods for Adding To DB--------------------------------------
 
         public async Task<User> AddUserAsync(User user)

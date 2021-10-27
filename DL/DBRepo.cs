@@ -217,7 +217,7 @@ namespace DL
 
         }
 
-        public async Task<Match> GetmatchByIdAsync(int id)
+        public async Task<Match> GetMatchByIdAsync(int id)
         {
             return await _context.Matches
                 .Include(r => r.Messages)
@@ -299,6 +299,7 @@ namespace DL
                 Interest = user.Interest,
                 ElementId = user.ElementId,
                 profilepic = user.profilepic,
+                Pokemons = user.Pokemons
             };
         }
 
@@ -347,7 +348,7 @@ namespace DL
 
         public async Task DeleteMatchAsync(int id)
         {
-            _context.Matches.Remove(await GetmatchByIdAsync(id));
+            _context.Matches.Remove(await GetMatchByIdAsync(id));
             await _context.SaveChangesAsync();
             _context.ChangeTracker.Clear();
         }
