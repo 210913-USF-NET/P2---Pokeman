@@ -22,6 +22,8 @@ namespace DL
 
         Task<List<Match>> GetMatchesAsync();
 
+        Task<List<Pokemon>> GetPokemonAsync();
+
         //------------------------------------Methods For Getting Data by Id--------------------------------
 
         Task<User> GetUserByIdAsync(int id);
@@ -34,7 +36,9 @@ namespace DL
 
         Task<Message> GetMessageByIdAsync(int id);
 
-        Task<Match> GetmatchByIdAsync(int id);
+        Task<Match> GetMatchByIdAsync(int id);
+
+        Task<Pokemon> GetPokemonByIdAsync(int id);
 
         //------------------------------------Methods for Adding To DB--------------------------------------
 
@@ -48,6 +52,8 @@ namespace DL
 
         Task<Match> AddMatchAsync(Match match);
 
+        Task<Pokemon> AddPokemonAsync(Pokemon pokemon);
+
 
         //------------------------------------Methods for Updating DB--------------------------------------
 
@@ -55,9 +61,13 @@ namespace DL
 
         Task<Element> UpdateElementAsync(Element element);
 
+        Task<Pokemon> UpdatePokemonAsync(Pokemon pokemon);
+
         //------------------------------------Methods for Deleting From DB---------------------------------
 
-        Task RemoveMoveAsync(int id);
+        Task DeleteMoveAsync(int id);
+
+        Task DeletePokemonAsync(int id);
 
         Task DeleteUserAsync(int id);
 

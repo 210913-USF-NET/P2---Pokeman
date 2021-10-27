@@ -56,7 +56,6 @@ namespace WebAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put([FromBody] User newUser)
         {
-            //Shrek 5ever
             User updatedUser = await _bl.UpdateUserAsync(newUser);
             return Ok(updatedUser);
         }

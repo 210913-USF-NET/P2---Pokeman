@@ -23,6 +23,37 @@ namespace DL
         public async Task<List<User>> GetUserListAsync()
         {
             return await _context.Users
+                .Select(r => new User() {
+                    Id = r.Id,
+                    Username = r.Username,
+                    Email = r.Email,
+                    Password = r.Password,
+                    Gender = r.Gender,
+                    Interest = r.Interest,
+                    ElementId = r.ElementId,
+
+                    Matches = r.Matches.Select(a => new Match()
+                    {
+                        Id = a.Id,
+                        Name = a.Name,
+                        Messages = a.Messages,
+                        UserId = a.UserId
+
+                    }).ToList(),
+
+                    Pokemons = r.Pokemons.Select(a => new Pokemon()
+                    {
+                        Id = a.Id,
+                        Name = a.Name,
+                        UserId = a.UserId
+
+                    }).ToList()
+                }).ToListAsync();
+        }
+
+        public async Task<List<Pokemon>> GetPokemonAsync()
+        {
+            return await _context.Pokemons
                 .Select(r => r).ToListAsync();
         }
 
@@ -124,6 +155,7 @@ namespace DL
                     Gender = r.Gender,
                     Interest = r.Interest,
                     ElementId = r.ElementId,
+                    profilepic = r.profilepic,
 
                     Matches = r.Matches.Select(a => new Match()
                     {
@@ -164,6 +196,8 @@ namespace DL
                     Gender = e.Gender,
                     Interest = e.Interest,
                     ElementId = e.ElementId,
+                    profilepic = e.profilepic,
+
 
                     Matches = e.Matches.Select(a => new Match()
                     {
@@ -199,6 +233,14 @@ namespace DL
                 .FirstOrDefaultAsync(r => r.Id == id);
         }
 
+        public async Task<Pokemon> GetPokemonByIdAsync(int id)
+        {
+            return await _context.Pokemons
+                .AsNoTracking()
+                .Include(r => r.UserId)
+                .FirstOrDefaultAsync(r => r.Id == id);
+        }
+
         public async Task<List<Message>> GetMessagesFromMatchIdAsync(int id)
         {
             return await _context.Messages
@@ -215,7 +257,7 @@ namespace DL
 
         }
 
-        public async Task<Match> GetmatchByIdAsync(int id)
+        public async Task<Match> GetMatchByIdAsync(int id)
         {
             return await _context.Matches
                 .Include(r => r.Messages)
@@ -245,6 +287,14 @@ namespace DL
             await _context.SaveChangesAsync();
             _context.ChangeTracker.Clear();
             return ele;
+        }
+
+        public async Task<Pokemon> AddPokemonAsync(Pokemon pokemon)
+        {
+            await _context.AddAsync(pokemon);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+            return pokemon;
         }
 
         public async Task<User> AddUserAsync(User user)
@@ -295,7 +345,9 @@ namespace DL
                 Password = user.Password,
                 Gender = user.Gender,
                 Interest = user.Interest,
-                ElementId = user.ElementId
+                ElementId = user.ElementId,
+                profilepic = user.profilepic,
+                Pokemons = user.Pokemons
             };
         }
 
@@ -312,11 +364,26 @@ namespace DL
             };
         }
 
+        public async Task<Pokemon> UpdatePokemonAsync(Pokemon pokemon)
+        {
+            _context.Pokemons.Update(pokemon);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+            return pokemon;
+        }
+
         //------------------------------------Methods for Deleting From DB---------------------------------
 
-        public async Task RemoveMoveAsync(int id)
+        public async Task DeleteMoveAsync(int id)
         {
             _context.Moves.Remove(await GetMovesFromElementIdAsync(id));
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+        }
+
+        public async Task DeletePokemonAsync(int id)
+        {
+            _context.Pokemons.Remove(await GetPokemonByIdAsync(id));
             await _context.SaveChangesAsync();
             _context.ChangeTracker.Clear();
         }
@@ -344,7 +411,7 @@ namespace DL
 
         public async Task DeleteMatchAsync(int id)
         {
-            _context.Matches.Remove(await GetmatchByIdAsync(id));
+            _context.Matches.Remove(await GetMatchByIdAsync(id));
             await _context.SaveChangesAsync();
             _context.ChangeTracker.Clear();
         }

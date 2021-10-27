@@ -54,7 +54,6 @@ namespace WebAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put([FromBody] Element newElement)
         {
-            //Shrek 5ever
             Element updatedElement = await _bl.UpdateElementAsync(newElement);
             return Ok(updatedElement);
         }

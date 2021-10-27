@@ -21,6 +21,8 @@ namespace Models
 
         public int ElementId { get; set; }
 
+        public string profilepic { get; set; }
+
         public List<Match> Matches { get; set; }
 
         public List<Pokemon> Pokemons { get; set; }

@@ -1,4 +1,4 @@
-# P2 - PokeMatch
+# P2 - PokeMatch - Backend
 
 Team Members
 - Karla Rodriguez
