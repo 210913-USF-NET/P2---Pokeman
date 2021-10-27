@@ -47,6 +47,8 @@ namespace DL
                     {
                         Id = a.Id,
                         Name = a.Name,
+                        Hp = a.Hp,
+                        ImgUrl = a.ImgUrl,
                         UserId = a.UserId
 
                     }).ToList()
@@ -285,7 +287,7 @@ namespace DL
                     Name = r.Name,
                     ImgUrl = r.ImgUrl,
                     UserId = r.UserId,
-                    UserId2 = r.UserId2
+                    UserId2 = r.UserId2,
                     Messages = r.Messages.Select(e => new Message()
                     {
                         Id = e.Id,
