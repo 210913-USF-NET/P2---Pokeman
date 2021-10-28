@@ -197,8 +197,6 @@ namespace DL
                 .FirstOrDefaultAsync(r => r.Id == id);
         }
 
-
-
         public async Task<Element> GetElementByIdAsync(int id)
         {
             return await _context.Elements
