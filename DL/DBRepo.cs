@@ -257,7 +257,6 @@ namespace DL
         {
             return await _context.Moves
                 .AsNoTracking()
-                .Include(r => r.ElementId)
                 .FirstOrDefaultAsync(r => r.Id == id);
         }
 
