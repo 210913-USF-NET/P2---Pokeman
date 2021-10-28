@@ -23,7 +23,8 @@ namespace DL
         public async Task<List<User>> GetUserListAsync()
         {
             return await _context.Users
-                .Select(r => new User() {
+                .Select(r => new User()
+                {
                     Id = r.Id,
                     Username = r.Username,
                     Email = r.Email,
@@ -70,7 +71,7 @@ namespace DL
                 .Select(r => new Element()
                 {
                     Id = r.Id,
-                    Name = r.Name, 
+                    Name = r.Name,
 
                     Users = r.Users.Select(e => new User()
                     {
@@ -83,7 +84,7 @@ namespace DL
                         ElementId = e.ElementId,
                         profilepic = e.profilepic,
 
-                        Matches = e.Matches.Select(a => new Match() 
+                        Matches = e.Matches.Select(a => new Match()
                         {
                             Id = a.Id,
                             Name = a.Name,
@@ -94,7 +95,7 @@ namespace DL
 
                         }).ToList(),
 
-                        Pokemons = e.Pokemons.Select(a => new Pokemon() 
+                        Pokemons = e.Pokemons.Select(a => new Pokemon()
                         {
                             Id = a.Id,
                             Name = a.Name,
@@ -106,7 +107,7 @@ namespace DL
 
                     }).ToList(),
 
-                    Moves = r.Moves.Select(e => new Move() 
+                    Moves = r.Moves.Select(e => new Move()
                     {
                         Id = e.Id,
                         action = e.action,
@@ -161,7 +162,7 @@ namespace DL
                 .Include(r => r.Matches)
                 .Include(r => r.Pokemons)
                 .AsNoTracking()
-                .Select(r => new User() 
+                .Select(r => new User()
                 {
                     Id = r.Id,
                     Username = r.Username,
@@ -252,7 +253,7 @@ namespace DL
             })
             .FirstOrDefaultAsync(e => e.Id == id);
         }
-        
+
         public async Task<Move> GetMovesFromElementIdAsync(int id)
         {
             return await _context.Moves
@@ -452,7 +453,5 @@ namespace DL
             await _context.SaveChangesAsync();
             _context.ChangeTracker.Clear();
         }
-
-      
     }
 }

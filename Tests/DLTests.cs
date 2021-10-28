@@ -245,6 +245,31 @@ namespace Tests
             }
         }
 
+        [Fact]
+        public async void UpdatingUserShouldUpdate()
+        {
+            using (var context = new PokeMatchDb(options))
+            {
+
+                IRepo repo = new DBRepo(context);
+                User userToUpdate = await repo.GetUserByIdAsync(1);
+
+                userToUpdate.Username = "Avery";
+
+
+                await repo.UpdateUserAsync(userToUpdate);
+            }
+
+            using (var context = new PokeMatchDb(options))
+            {
+
+                User user = context.Users.FirstOrDefault(r => r.Id == 1);
+
+                Assert.NotNull(user);
+                Assert.Equal("Avery", user.Username);
+            }
+        }
+
 
         [Fact]
         public async void AddingAPokemonShouldAddAPokemon()
