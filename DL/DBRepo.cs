@@ -265,8 +265,8 @@ namespace DL
         {
             return await _context.Pokemons
                 .AsNoTracking()
-                .Include(r => r.Id)
-                .FirstOrDefaultAsync(r => r.UserId == id);
+                .Include(r => r.UserId)
+                .FirstOrDefaultAsync(r => r.Id == id);
         }
 
         public async Task<List<Message>> GetMessagesFromMatchIdAsync(int id)
