@@ -265,7 +265,6 @@ namespace DL
         {
             return await _context.Pokemons
                 .AsNoTracking()
-                .Include(r => r.UserId)
                 .FirstOrDefaultAsync(r => r.Id == id);
         }
 
