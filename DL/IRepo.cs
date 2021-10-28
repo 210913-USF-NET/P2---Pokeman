@@ -76,6 +76,7 @@ namespace DL
         Task DeleteMessageAsync(int id);
 
         Task DeleteMatchAsync(int id);
+        Task DeleteElementAsync();
     }
 }
 

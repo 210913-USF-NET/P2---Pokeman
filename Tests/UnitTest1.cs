@@ -65,6 +65,7 @@ namespace Tests
             //Arrange
             Move test = new Move();
             int testId = 1;
+            
 
             //Act
             test.Id = testId;

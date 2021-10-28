@@ -93,14 +93,17 @@ namespace Tests
                         }
                     
                     );
-                    //context.Pokemons.Add(
-                    //    new Pokemon()
-                    //    {
-                    //        Id = 1,
-                    //        Name = "bulbasaur"
+                context.Pokemons.Add(
+                    new Pokemon()
+                    {
+                        Id = 1,
+                        Name = "bulbasaur",
+                        Hp = 100,
+                        ImgUrl = "test",
+                        UserId = 1
 
-
-                    //    }
+                    }
+                    );
                     //new Pokemon()
                     //{
                     //    Id = 2,
@@ -108,7 +111,7 @@ namespace Tests
                     //}
                     //);
 
-                context.SaveChanges();
+            context.SaveChanges();
             }
         }
 
@@ -217,6 +220,30 @@ namespace Tests
             }
         }
 
+        [Fact]
+        public async void UpdatingPokemonShouldUpdate()
+        {
+            using (var context = new PokeMatchDb(options))
+            {
+
+                IRepo repo = new DBRepo(context);
+                Pokemon pokeToUpdate = await repo.GetPokemonByIdAsync(1);
+
+                pokeToUpdate.Hp = 200;
+
+
+                await repo.UpdatePokemonAsync(pokeToUpdate);
+            }
+
+            using (var context = new PokeMatchDb(options))
+            {
+
+                Pokemon poke = context.Pokemons.FirstOrDefault(r => r.UserId == 1);
+
+                Assert.NotNull(poke);
+                Assert.Equal(200, poke.Hp);
+            }
+        }
 
 
         [Fact]
@@ -335,6 +362,56 @@ namespace Tests
             }
         }
 
+        [Fact]
+        public async void AddingAMoveShouldAddAMove()
+        {
+            using (var context = new PokeMatchDb(options))
+            {
+                IRepo repo = new DBRepo(context);
+                Move mvToAdd = new Move()
+                {
+                    Id = 1,
+                    action = "Thunderbolt",
+                    ElementId = 5
+
+                };
+
+                await repo.AddMoveAsync(mvToAdd);
+            }
+
+            using (var context = new PokeMatchDb(options))
+            {
+                Move mv = context.Moves.FirstOrDefault(m => m.Id == 1);
+
+                Assert.NotNull(mv);
+                Assert.Equal(1, mv.Id);
+                Assert.Equal("Thunderbolt", mv.action);
+                Assert.Equal(5, mv.ElementId);
+                
+            }
+        }
+
+        //[Fact]
+        //public async void RemovingElementShouldRemove()
+        //{
+        //    using (var context = new PokeMatchDb(options))
+        //    {
+        //        //Arrange with my repo and the item i'm going to add
+        //        IRepo repo = new DBRepo(context);
+        //        Element eleToRemove = await repo.GetElementByIdAsync(5);
+
+        //        //Act
+        //       await repo.DeleteElementAsync(eleToRemove);
+        //    }
+
+        //    using (var context = new PokeMatchDb(options))
+        //    {
+        //        //Assert
+        //        Element element = context.Elements.FirstOrDefault(r => r.Id == 5);
+
+        //        Assert.Null(element);
+        //    }
+        //}
     }
 }
 
