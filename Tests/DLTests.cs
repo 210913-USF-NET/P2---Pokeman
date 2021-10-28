@@ -238,7 +238,7 @@ namespace Tests
             using (var context = new PokeMatchDb(options))
             {
 
-                Pokemon poke = context.Pokemons.FirstOrDefault(r => r.UserId == 1);
+                Pokemon poke = context.Pokemons.FirstOrDefault(r => r.Id == 1);
 
                 Assert.NotNull(poke);
                 Assert.Equal(200, poke.Hp);
